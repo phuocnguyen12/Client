@@ -68,11 +68,6 @@
               transition: all 0.2s linear;
             }
           }
-
-          .link-active {
-            &::before {
-            }
-          }
         }
 
         .auth {
@@ -126,16 +121,16 @@
             line-height: 1.5;
             background: linear-gradient(
               103.38deg,
-              #f67102 5.1%,
-              #f4a91e 86.29%
+              #0257f6 5.1%,
+              #1e94f4 86.29%
             );
 
             &:hover {
               color: white;
               background: linear-gradient(
                 103.38deg,
-                #f4a91e 5.1%,
-                #f67102 86.29%
+                #1e94f4 5.1%,
+                #0257f6 86.29%
               );
             }
           }

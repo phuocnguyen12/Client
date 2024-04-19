@@ -1,7 +1,7 @@
-import HomePage from "../pages/HomePage/HomePage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import OrderPage from "../pages/OrderPage/OrderPage";
-import ProductsPage from "../pages/ProductsPage/ProductsPage";
+import HomePage from "../pages/Home/HomePage";
+import NotFoundPage from "../pages/NotFound/NotFoundPage";
+import OrderPage from "../pages/Order/OrderPage";
+import ProductsPage from "../pages/Products/ProductsPage";
 
 export const routes = [
   {
