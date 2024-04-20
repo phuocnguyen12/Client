@@ -6,7 +6,7 @@ import "./HeaderComponent.scss"
 
 const Header = () => {
   return (
-    <div className="container">
+    <div className="container1">
       <div className="wrapper">
         <div className="navigation">
           <img src={logoImage} alt="Logo" className="logo" />
@@ -43,10 +43,10 @@ const Header = () => {
               </Link>
             </li>
             <li className="auth">
-              <Link className="button-login" to="#">
+              <Link className="button-login" to="/login">
                 LogIn
               </Link>
-              <Link className="button-signup" to="#">
+              <Link className="button-signup" to="/register">
                 Register
               </Link>
             </li>
