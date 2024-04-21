@@ -1,20 +1,29 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
 import "./RegisterPage.scss";
 import { useMutationHooks } from "../../hooks/useMutationHook";
 import * as UserServices from "../../services/UserService";
 import Loading from "../../Components/LoadingComponent/Loading";
+import { message } from "antd";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const mutation = useMutationHooks((data) => UserServices.registerUser(data));
 
   const { data, isLoading } = mutation;
+
+  useEffect(() => {
+    if(data?.message === "SUCCESS") {
+      message.success()
+      navigate("/login")
+    }
+  }, [data, navigate])
 
   const handleOnChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -34,7 +43,6 @@ const RegisterPage = () => {
 
   const handleRegister = () => {
     mutation.mutate({ email, name, password, confirmPassword });
-    console.log("Register: ", email, name, password, confirmPassword);
   };
 
   return (
