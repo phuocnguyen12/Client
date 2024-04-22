@@ -15,6 +15,7 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 const Header = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
+  const [isActiveUser, setIsActiveUser] = useState(false);
 
   const handleToggleSearch = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
@@ -24,12 +25,18 @@ const Header = () => {
     setIsActiveCart((prevVisible) => !prevVisible);
   };
 
+  const handleToggleUser = () => {
+    setIsActiveUser((prevVisible) => !prevVisible)
+  }
+
   return (
     <header className="header">
+    {/* Logo */}
       <Link className="logo" to={"#"}>
         <img src={logoImage} alt="logo" />
       </Link>
 
+      {/* Navbar */}
       <nav className="navbar">
         <Link className="menu-link" to={"#"}>
           Home
@@ -48,14 +55,19 @@ const Header = () => {
         </Link>
       </nav>
 
+      {/* Icon */}
       <div className="icons">
+        {/* Menu Icon */}
         <div className="items" id="menu-btn">
           <FontAwesomeIcon icon={faBars} />
         </div>
+
+        {/* Search Icon */}
         <div className="items" id="search-btn" onClick={handleToggleSearch}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
 
+        {/* Search Form */}
         {isActiveSearch && (
           <form action="" className={"search-form"}>
             <input type="search" id="search-btn" placeholder="Search Here..." />
@@ -64,11 +76,13 @@ const Header = () => {
             </label>
           </form>
         )}
-
+        
+        {/* Cart Icon */}
         <div className="items" id="cart-btn" onClick={handleToggleCart}>
           <FontAwesomeIcon icon={faCartShopping} />
         </div>
-
+        
+        {/* Cart Form */}
         {isActiveCart && (
           <form className="shopping-cart">
             <div className="box">
@@ -105,9 +119,17 @@ const Header = () => {
           </form>
         )}
 
-        <div className="items" id="user-btn">
+        {/* User Icon */}
+        <div className="items" id="user-btn" onClick={handleToggleUser}>
           <FontAwesomeIcon icon={faUser} />
         </div>
+
+        {/* User Form */}
+        {isActiveUser && (
+          <form action="" className="user-form">
+            <h3>Your Name</h3>
+          </form>
+        )}
       </div>
     </header>
   );
