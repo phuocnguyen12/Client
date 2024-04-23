@@ -16,6 +16,7 @@ const Header = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
   const [isActiveUser, setIsActiveUser] = useState(false);
+  const [isActiveMenu, setIsActiveMenu] = useState(false);
 
   const handleToggleSearch = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
@@ -26,39 +27,45 @@ const Header = () => {
   };
 
   const handleToggleUser = () => {
-    setIsActiveUser((prevVisible) => !prevVisible)
-  }
+    setIsActiveUser((prevVisible) => !prevVisible);
+  };
+
+  const handleToggleMenu = () => {
+    setIsActiveMenu((prevVisible) => !prevVisible);
+  };
 
   return (
     <header className="header">
-    {/* Logo */}
+      {/* Logo */}
       <Link className="logo" to={"#"}>
         <img src={logoImage} alt="logo" />
       </Link>
 
       {/* Navbar */}
-      <nav className="navbar">
-        <Link className="menu-link" to={"#"}>
-          Home
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Device
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Service
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Blog
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Contact
-        </Link>
-      </nav>
+      {isActiveMenu && (
+        <nav className="navbar">
+          <Link className="menu-link" to={"#"}>
+            Home
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Device
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Service
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Blog
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Contact
+          </Link>
+        </nav>
+      )}
 
       {/* Icon */}
       <div className="icons">
         {/* Menu Icon */}
-        <div className="items" id="menu-btn">
+        <div className="items" id="menu-btn" onClick={handleToggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </div>
 
@@ -76,12 +83,12 @@ const Header = () => {
             </label>
           </form>
         )}
-        
+
         {/* Cart Icon */}
         <div className="items" id="cart-btn" onClick={handleToggleCart}>
           <FontAwesomeIcon icon={faCartShopping} />
         </div>
-        
+
         {/* Cart Form */}
         {isActiveCart && (
           <form className="shopping-cart">
