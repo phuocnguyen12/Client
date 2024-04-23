@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import delivery from "../../assets/icon-delivery.png"
-import device from "../../assets/icon-device.png"
-import "./HomePage.scss"
+import delivery from "../../assets/icon-delivery.png";
+import device from "../../assets/icon-device.png";
+import "./HomePage.scss";
 
 const HomePage = () => {
   const count = useSelector((state) => state.counter.value);
@@ -47,6 +47,19 @@ const HomePage = () => {
             </Link>
           </div>
           <div className="box">
+            <img src={delivery} alt="device" />
+            <h3>free delivery</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut
+              aperiam fugit eos et dolorem eveniet beatae facilis consequatur
+              non. Ea blanditiis minus vitae deleniti dolorum labore quasi
+              aspernatur modi ipsam!
+            </p>
+            <Link to={"#"} className="btn">
+              read more
+            </Link>
+          </div>
+          <div className="box">
             <img src={device} alt="device" />
             <h3>Easy Payments</h3>
             <p>
@@ -56,7 +69,7 @@ const HomePage = () => {
               enim, eveniet rem dolorem praesentium iure incidunt voluptates?
             </p>
             <Link to={"#"} className="btn">
-                Read More
+              Read More
             </Link>
           </div>
         </div>
