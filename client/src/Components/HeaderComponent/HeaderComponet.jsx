@@ -15,23 +15,35 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 const Header = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
-  const [isActiveUser, setIsActiveUser] = useState(false);
+  const [isActiveAuth, setIsActiveAuth] = useState(false);
   const [isActiveMenu, setIsActiveMenu] = useState(false);
 
-  const handleToggleSearch = () => {
+  const handleSearchClick = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
+    setIsActiveAuth(false);
+    setIsActiveCart(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleCart = () => {
+  const handleCartClick = () => {
     setIsActiveCart((prevVisible) => !prevVisible);
+    setIsActiveAuth(false);
+    setIsActiveSearch(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleUser = () => {
-    setIsActiveUser((prevVisible) => !prevVisible);
+  const handleAuthClick = () => {
+    setIsActiveAuth((prevVisible) => !prevVisible);
+    setIsActiveSearch(false)
+    setIsActiveCart(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleMenu = () => {
+  const handleMenuClick = () => {
     setIsActiveMenu((prevVisible) => !prevVisible);
+    setIsActiveAuth(false);
+    setIsActiveCart(false);
+    setIsActiveSearch(false)
   };
 
   return (
@@ -42,18 +54,24 @@ const Header = () => {
       </Link>
 
       {/* Navbar */}
-      <nav className="navbar">
+      <nav className={`navbar ${isActiveMenu ? "active" : ""}`}>
         <Link className="menu-link" to={"#"}>
           Home
         </Link>
         <Link className="menu-link" to={"#"}>
-          Device
+          Shop
         </Link>
         <Link className="menu-link" to={"#"}>
           Service
         </Link>
         <Link className="menu-link" to={"#"}>
+          Review
+        </Link>
+        <Link className="menu-link" to={"*"}>
           Blog
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          About
         </Link>
         <Link className="menu-link" to={"#"}>
           Contact
@@ -63,100 +81,80 @@ const Header = () => {
       {/* Icon */}
       <div className="icons">
         {/* Menu Icon */}
-        <div className="items" id="menu-btn" onClick={handleToggleMenu}>
+        <div className="items" id="menu-btn" onClick={handleMenuClick}>
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        {/* Navbar Form */}
-        {isActiveMenu && (
-          <form className="navbar-form">
-            <Link className="menu-link" to={"#"}>
-              Home
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Device
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Service
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Blog
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Contact
-            </Link>
-          </form>
-        )}
-
         {/* Search Icon */}
-        <div className="items" id="search-btn" onClick={handleToggleSearch}>
+        <div className="items" id="search-btn" onClick={handleSearchClick}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
 
-        {/* Search Form */}
-        {isActiveSearch && (
-          <form action="" className={"search-form"}>
-            <input type="search" id="search-btn" placeholder="Search Here..." />
-            <label for="search-box" className="search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </label>
-          </form>
-        )}
-
         {/* Cart Icon */}
-        <div className="items" id="cart-btn" onClick={handleToggleCart}>
+        <div className="items" id="cart-btn" onClick={handleCartClick}>
           <FontAwesomeIcon icon={faCartShopping} />
         </div>
 
-        {/* Cart Form */}
-        {isActiveCart && (
-          <form className="shopping-cart">
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={device} alt="device" className="device" />
-              <div className="content">
-                <h3>Sensor Circuit</h3>
-                <span className="price">$2.99</span>
-                <span className="quantity">Qty: 1</span>
-              </div>
-            </div>
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={device} alt="device" className="device" />
-              <div className="content">
-                <h3>Sensor Circuit</h3>
-                <span className="price">$2.99</span>
-                <span className="quantity">Qty: 1</span>
-              </div>
-            </div>
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={device} alt="device" className="device" />
-              <div className="content">
-                <h3>Sensor Circuit</h3>
-                <span className="price">$2.99</span>
-                <span className="quantity">Qty: 1</span>
-              </div>
-            </div>
-            <div className="total">Total: $2.99</div>
-            <Link to={"#"} className="btn">
-              Checkout
-            </Link>
-          </form>
-        )}
-
         {/* User Icon */}
-        <div className="items" id="user-btn" onClick={handleToggleUser}>
+        <div className="items" id="user-btn" onClick={handleAuthClick}>
           <FontAwesomeIcon icon={faUser} />
         </div>
-
-        {/* User Form */}
-        {isActiveUser && (
-          <form action="" className="user-form">
-            <h3>Your Name</h3>
-          </form>
-        )}
       </div>
+
+      {/* Search Form */}
+      <form action="" className={`search-form ${isActiveSearch ? "active" : ""}`}>
+        <input type="search" placeholder="Search here..." id="search-box" />
+        <label htmlFor="search-box" className="search">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </label>
+      </form>
+
+      {/* Shopping Cart */}
+      <div className={`shopping-cart ${isActiveCart ? "active" : ""}`}>
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={device} alt="device" />
+          <div className="content">
+            <h3>Module Sensor</h3>
+            <span className="quantity">2</span>
+            <span className="multiply">x</span>
+            <span className="price">$12.99</span>
+          </div>
+        </div>
+
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={device} alt="device" />
+          <div className="content">
+            <h3>Module Sensor</h3>
+            <span className="quantity">2</span>
+            <span className="multiply">x</span>
+            <span className="price">$12.99</span>
+          </div>
+        </div>
+
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={device} alt="device" />
+          <div className="content">
+            <h3>Module Sensor</h3>
+            <span className="quantity">2</span>
+            <span className="multiply">x</span>
+            <span className="price">$12.99</span>
+          </div>
+        </div>
+        <h3 className="total">
+          Total: <span>$38.97</span>
+        </h3>
+        <Link to={"#"} className="btn">
+          Check Out
+        </Link>
+      </div>
+
+      {/* Auth Form */}
+      <form action="" className={`auth-form ${isActiveAuth ? "active" : ""}`}>
+        <h3>Auth Form</h3>
+      </form>
     </header>
   );
 };
