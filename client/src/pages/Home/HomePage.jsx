@@ -1,80 +1,45 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import delivery from "../../assets/icon-delivery.png";
-import device from "../../assets/icon-device.png";
+import device1 from "../../assets/arduino-Uno.png"
+import device2 from "../../assets/arduino-control.png"
+import device3 from "../../assets/arduino-nano.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.scss";
 
 const HomePage = () => {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
+  const slides = [device1, device2, device3];
+  const [index, setIndex] = useState(0);
+  const handleSlideChange = (increment) => {
+    const newIndex = (index + increment + slides.length) % slides.length;
+    setIndex(newIndex);
+  }
   return (
-    <div>
-      <section className="Home" id="home">
-        <div className="content">
-          <h3>
-            devices and <span>modules</span> Product for Your
-          </h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-            ducimus quisquam voluptas minima blanditiis aliquam quis expedita
-            fugit quibusdam doloribus exercitationem similique enim, eveniet rem
-            dolorem praesentium iure incidunt voluptates?
-          </p>
-          <Link to={"*"} className="btn">
-            Shop now
-          </Link>
-        </div>
-      </section>
+    <section className="home">
+      <div className="slides-container">
+        {slides.map((slide, idx) => (
+          <div className={`slides ${index === idx ? "active" : ""}`} key={idx}>
+            <div className="content">
+              <span>device and module</span>
+              <h3>up to 50% off</h3>
+              <Link to="#" className="btn">
+                Shop now
+              </Link>
+            </div>
+            <div className="image">
+              <img src={slide} alt="" />
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <section className="features">
-        <h1 className="heading">
-          Our <span>features</span>
-        </h1>
-        <div className="box-container">
-          <div className="box">
-            <img src={device} alt="device" />
-            <h3>devices and modules</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatum ducimus quisquam voluptas minima blanditiis aliquam
-              quis expedita fugit quibusdam doloribus exercitationem similique
-              enim, eveniet rem dolorem praesentium iure incidunt voluptates?
-            </p>
-            <Link to={"#"} className="btn">
-              Read Now
-            </Link>
-          </div>
-          <div className="box">
-            <img src={delivery} alt="device" />
-            <h3>free delivery</h3>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatum ducimus quisquam voluptas minima blanditiis aliquam
-              quis expedita fugit quibusdam doloribus exercitationem similique
-              enim, eveniet rem dolorem praesentium iure incidunt voluptates?
-            </p>
-            <Link to={"#"} className="btn">
-              read more
-            </Link>
-          </div>
-          <div className="box">
-            <img src={device} alt="device" />
-            <h3>Easy Payments</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatum ducimus quisquam voluptas minima blanditiis aliquam
-              quis expedita fugit quibusdam doloribus exercitationem similique
-              enim, eveniet rem dolorem praesentium iure incidunt voluptates?
-            </p>
-            <Link to={"#"} className="btn">
-              Read More
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <div id="next-slide" className="next-icon" onClick={() => handleSlideChange(1)}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </div>
+      <div id="prev-slide" className="prev-icon" onClick={() => handleSlideChange(-1)}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </div>
+    </section>
   );
 };
 
