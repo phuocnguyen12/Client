@@ -73,7 +73,7 @@ const Header = () => {
         <Link className="menu-link" to={"/about"}>
           About
         </Link>
-        <Link className="menu-link" to={"#"}>
+        <Link className="menu-link" to={"/contact"}>
           Contact
         </Link>
       </nav>

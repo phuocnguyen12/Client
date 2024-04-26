@@ -6,6 +6,7 @@ import RegisterPage from "../pages/Register/RegisterPage";
 import ShopPage from "../pages/Shop/ShopPage";
 import ReviewPage from "../pages/Review/ReviewPage";
 import BlogPage from "../pages/Blog/BlogPage";
+import ContactPage from "../pages/Contact/ContactPage";
 
 export const routes = [
   {
@@ -19,10 +20,6 @@ export const routes = [
     isShowHeader: true,
   },
   {
-    path: "/about",
-    page: AboutPage,
-  },
-  {
     path: "/review",
     page: ReviewPage,
     isShowHeader: true,
@@ -30,6 +27,15 @@ export const routes = [
   {
     path: "/blog",
     page: BlogPage,
+    isShowHeader: true,
+  },
+  {
+    path: "/about",
+    page: AboutPage,
+  },
+  {
+    path: "/contact",
+    page: ContactPage,
     isShowHeader: true,
   },
   {
