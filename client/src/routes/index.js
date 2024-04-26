@@ -4,6 +4,7 @@ import AboutPage from "../pages/About/AboutPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
 import RegisterPage from "../pages/Register/RegisterPage";
 import ShopPage from "../pages/Shop/ShopPage";
+import ReviewPage from "../pages/Review/ReviewPage";
 
 export const routes = [
   {
@@ -19,6 +20,11 @@ export const routes = [
   {
     path: "/about",
     page: AboutPage,
+  },
+  {
+    path: "/review",
+    page: ReviewPage,
+    isShowHeader: true,
   },
   {
     path: "/login",
