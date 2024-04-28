@@ -1,64 +1,63 @@
 @import "../../index.scss";
 
 .blogs {
+  padding-top: 12rem;
+
   .box-container {
-    @include grid(30rem);
+    display: grid;
+    grid-template-columns: repeat(auto-fix, minmax(26rem, 1fr));
+    gap: 1.5rem;
 
     .box {
-      border: $border;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: $box-shadow;
+      background: #fff;
 
-      &:hover .image img {
-        transform: scale(1.2);
-      }
-
-      .image {
-        height: 25rem;
+      img {
+        object-fit: cover;
         width: 100%;
-        overflow: hidden;
-
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
+        height: 25rem;
       }
 
       .content {
-        padding: 2rem 1.5rem;
+        padding: 2rem;
 
         .icons {
-          border-bottom: $border;
-          padding-bottom: 1.7rem;
-          margin-bottom: 1.7rem;
           display: flex;
-          align-items: center;
           justify-content: space-between;
+          border-bottom: $border;
+          padding-bottom: 1.5rem;
+          margin-bottom: 1rem;
 
-          .icon-item {
-            font-size: 1.4rem;
+          .icons-link {
+            font-size: 1.5rem;
             color: $light-color;
 
             &:hover {
-              color: $blue;
+              color: $black;
             }
+          }
 
-            .item {
-              color: $blue;
-              padding-right: 0.5rem;
-            }
+          i {
+            color: $blue;
+            padding-right: 0.5rem;
           }
         }
 
         h3 {
           font-size: 2.2rem;
           color: $black;
+          font-size: 2.2rem;
+          line-height: 1.8;
+          padding: 0.5rem 0;
         }
 
         p {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
           color: $light-color;
-          line-height: 2;
-          padding: 1rem 0;
+          line-height: 1.8;
+          padding: 0.5rem 0;
         }
       }
     }

@@ -1,4 +1,4 @@
-import { faCalendarDays, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -7,254 +7,173 @@ import "./BlogPage.scss";
 
 const BlogPage = () => {
   return (
-    <div>
-      <div className="heading">
-        <h1>Our Blog</h1>
-      </div>
+    <section className="blogs" id="blogs">
+      <h1 className="heading">
+        our <span>blogs</span>
+      </h1>
 
-      <section className="blogs">
-        <h1 className="title">
-          Our <span>Blog</span>
-          <Link className="link" to={"#"}>
-            View All
-          </Link>
-        </h1>
+      <div className="box-container">
+        <div className="box">
+          <img src={blog} alt="" />
+          <div className="content">
+            <div className="icons">
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faUser} />
+                </i>
+                by user
+              </Link>
 
-        <div className="box-container">
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faCalendar} />
+                </i>
+                1st May, 2021
               </Link>
             </div>
-          </div>
+            
+            <h3>Device and Module and Sensor</h3>
 
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
+            <p>
+              Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam,
+              Expedita.
+            </p>
 
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
-          </div>
-
-          <div className="box">
-            <div className="image">
-              <img src={blog} alt="" />
-            </div>
-
-            <div className="content">
-              <div className="icons">
-                <Link className="icon-item" to={"#"}>
-                  <FontAwesomeIcon className="item" icon={faCalendarDays} />
-                  27th April 2024
-                </Link>
-                <Link className="icon-item" to={"#"}>
-                  {" "}
-                  <FontAwesomeIcon className="item" icon={faUser} /> by admin
-                </Link>
-              </div>
-              <h3>Blog Title Goes Here</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias vero ducimus repellendus iure ad maiores vitae ipsum,
-                rem porro? Delectus, at. Minima iure quas veritatis voluptates
-                porro quos iusto voluptatem.
-              </p>
-              <Link to={"#"} className="btn">
-                Read More
-              </Link>
-            </div>
+            <Link to="/" className="btn">
+              read more
+            </Link>
           </div>
         </div>
-      </section>
-    </div>
+
+        <div className="box">
+          <img src={blog} alt="" />
+          <div className="content">
+            <div className="icons">
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faUser} />
+                </i>
+                by user
+              </Link>
+
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faCalendar} />
+                </i>
+                1st May, 2021
+              </Link>
+            </div>
+
+            <h3>Device and Module and Sensor</h3>
+
+            <p>
+              Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam,
+              Expedita.
+            </p>
+
+            <Link to="/" className="btn">
+              read more
+            </Link>
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={blog} alt="" />
+          <div className="content">
+            <div className="icons">
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faUser} />
+                </i>
+                by user
+              </Link>
+
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faCalendar} />
+                </i>
+                1st May, 2021
+              </Link>
+            </div>
+
+            <h3>Device and Module and Sensor</h3>
+
+            <p>
+              Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam,
+              Expedita.
+            </p>
+
+            <Link to="/" className="btn">
+              read more
+            </Link>
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={blog} alt="" />
+          <div className="content">
+            <div className="icons">
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faUser} />
+                </i>
+                by user
+              </Link>
+
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faCalendar} />
+                </i>
+                1st May, 2021
+              </Link>
+            </div>
+
+            <h3>Device and Module and Sensor</h3>
+
+            <p>
+              Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam,
+              Expedita.
+            </p>
+
+            <Link to="/" className="btn">
+              read more
+            </Link>
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={blog} alt="" />
+          <div className="content">
+            <div className="icons">
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faUser} />
+                </i>
+                by user
+              </Link>
+
+              <Link to="/" className="icons-link">
+                <i>
+                  <FontAwesomeIcon icon={faCalendar} />
+                </i>
+                1st May, 2021
+              </Link>
+            </div>
+
+            <h3>Device and Module and Sensor</h3>
+
+            <p>
+              Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam,
+              Expedita.
+            </p>
+
+            <Link to="/" className="btn">
+              read more
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

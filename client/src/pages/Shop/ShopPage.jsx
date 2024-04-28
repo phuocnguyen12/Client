@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {getCategories} from "../../api/app"
+import { getCategories } from "../../api/app";
 import banner1 from "../../assets/icon-device.png";
 import product from "../../assets/arduino-nano.png";
 import "./ShopPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartPlus,
-  faEye,
-  faHeart,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ShopPage = () => {
   const [categories, setCategories] = useState(null);
@@ -24,208 +19,108 @@ const ShopPage = () => {
   useEffect(() => {
     fetchCategories();
   }, []);
-  console.log(categories);
 
   return (
     <div>
-      <div className="heading">
-        <h1>Our Shop</h1>
-      </div>
-
       <section className="category">
-        <h1 className="title">
-          Our <span>Category</span>
-          <Link className="link" to={"#"}>
-            View All
-          </Link>
+        <h1 className="heading">
+          Products <span>Categories</span>
         </h1>
 
         <div className="box-container">
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>Electronic Components</h3>
-          </Link>
-        </div>
-
-        <div className="box-container">
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>Electronic Components</h3>
-          </Link>
-        </div>
-
-        <div className="box-container">
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>Electronic Components</h3>
-          </Link>
-        </div>
-
-        <div className="box-container">
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>Electronic Components</h3>
-          </Link>
+          {categories?.map((el, index) => (
+            <Link to={"#"} className="box">
+              <img src={banner1} alt="" />
+              <h3 key={index}>{el.title}</h3>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <section className="products">
-        <h1 className="title">
+      <section className="products" id="products">
+        <h1 className="heading">
           Our <span>Products</span>
-          <Link className="link" to={"#"}>
-            View All
-          </Link>
         </h1>
 
         <div className="box-container">
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>ESP8266 WIFI Module</h3>
+            <div className="price">$4.99/ -- 12.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>Module Sensor</h3>
-              <div className="price">$12.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              Add to Cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>ESP8266 WIFI Module</h3>
+            <div className="price">$4.99/ -- 12.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>Module Sensor</h3>
-              <div className="price">$12.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              Add to Cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>ESP8266 WIFI Module</h3>
+            <div className="price">$4.99/ -- 12.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>Module Sensor</h3>
-              <div className="price">$12.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              Add to Cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>ESP8266 WIFI Module</h3>
+            <div className="price">$4.99/ -- 12.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>Module Sensor</h3>
-              <div className="price">$12.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              Add to Cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>ESP8266 WIFI Module</h3>
+            <div className="price">$4.99/ -- 12.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>Module Sensor</h3>
-              <div className="price">$12.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              Add to Cart
+            </button>
           </div>
         </div>
       </section>
