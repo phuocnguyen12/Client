@@ -5,33 +5,50 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {login} from "../../apis/user"
 import logoImage from "../../assets/Logo-main.png";
 import "./LoginPage.scss";
 
 const LoginPage = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const [payload, setPayload] = useState({
-    email: "",
-    password: "",
-    name: "",
-  });
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
-  const [isRegister, setIsRegister] = useState(false);
-  const handleSubmit = useCallback(() => {
-    console.log(payload);
-  }, [payload]);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
-  // const handleOnChangeEmail = (e) => {
-  //   setEmail(e.target.value);
-  // };
+  const handleLogin = async () => {
+    try {
+      const response = await login(email, password);
 
-  // const handleOnChangePassword = (e) => {
-  //   setPassword(e.target.value);
-  // };
+      if (response.success) {
+        setError(response.message);
+        setTimeout(() => {
+          navigate("/"); // Navigate to the home page route
+        }, 3000); // 3000 milliseconds (3 seconds)
+      } else {
+        setError(response.message);
+      }
+      // Handle the response, e.g., store token, user info, etc.
+      console.log("Login successful:", response);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        // If the backend provided an error message, update the error state
+        setError(error.response.data.error);
+      } else {
+        setError("An error occurred during login"); // Fallback message if no specific error message from backend
+      }
+      console.error("Error during login:", error);
+    }
+  };
 
   return (
     <div className="container">
@@ -53,25 +70,24 @@ const LoginPage = () => {
         <div className="form-group">
           <input
             type="text"
-            value={payload.email}
-            // onChange={handleOnChangeEmail}
-            onChange={setPayload}
+            value={email}
+            onChange={handleEmailChange}
             placeholder="Enter your Email"
             className="input-text"
           />
 
           <input
             type="password"
-            value={payload.password}
-            // onChange={handleOnChangePassword}
-            onChange={setPayload}
+            value={password}
+            onChange={handlePasswordChange}
             placeholder="Enter Your Password"
             className="input-text"
           />
 
-          {<span className="error">error</span>}
+          {/* {<span className="error">error</span>} */}
+          {error && <span className="error">{error}</span>}
 
-          <button onClick={handleSubmit}>Login</button>
+          <button onClick={handleLogin}>Login</button>
         </div>
 
         <p className="forgot-pass">Forgot password ?</p>

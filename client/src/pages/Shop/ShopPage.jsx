@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCategories, getProducts } from "../../apis/app";
+import { getProducts } from "../../apis/app";
 import banner1 from "../../assets/icon-device.png";
-import "./ShopPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import "./ShopPage.scss";
 
 const ShopPage = () => {
-  // const [categories, setCategories] = useState(null);
   const { categories } = useSelector((state) => state.app);
   const [products, setProducts] = useState(null);
-  const fetchCategories = async () => {
-    const response = await getCategories();
-    const product = await getProducts();
-    if (response.success) {
-      // setCategories(response.getCategoryStatus);
-      setProducts(product.products);
-    }
+  const fetchProducts = async () => {
+    // const product = await getProducts();
+    // if (product.success) {
+    //   setProducts(product.products);
+    // }
+    const [bestSeller, newProducts] = await Promise.all([
+      getProducts({ sort: "-sold" }),
+      getProducts({ sort: "-createdAt" }),
+    ]);
+    console.log({ bestSeller, newProducts });
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchProducts();
   }, []);
 
   return (
@@ -32,8 +34,8 @@ const ShopPage = () => {
         </h1>
 
         <div className="box-container">
-          {categories?.map((el, index) => (
-            <Link key={el.id} to={"#"} className="box">
+          {categories?.map((el) => (
+            <Link to={"#"} className="box">
               <img src={banner1} alt="" />
               <h3>{el.title}</h3>
             </Link>
