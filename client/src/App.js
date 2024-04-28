@@ -1,10 +1,16 @@
-import { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import { routes } from "./routes";
 import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
+import { useDispatch } from "react-redux";
+import { getCategories } from "./apis/app";
 
 function App() {
-  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
   return (
     <div>
       <Router>

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCategories } from "../../api/app";
+import { getCategories, getProducts } from "../../apis/app";
 import banner1 from "../../assets/icon-device.png";
-import product from "../../assets/arduino-nano.png";
 import "./ShopPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const ShopPage = () => {
-  const [categories, setCategories] = useState(null);
+  // const [categories, setCategories] = useState(null);
+  const { categories } = useSelector((state) => state.app);
+  const [products, setProducts] = useState(null);
   const fetchCategories = async () => {
     const response = await getCategories();
+    const product = await getProducts();
     if (response.success) {
-      setCategories(response.getAllCategory);
+      // setCategories(response.getCategoryStatus);
+      setProducts(product.products);
     }
   };
 
@@ -29,9 +33,9 @@ const ShopPage = () => {
 
         <div className="box-container">
           {categories?.map((el, index) => (
-            <Link to={"#"} className="box">
+            <Link key={el.id} to={"#"} className="box">
               <img src={banner1} alt="" />
-              <h3 key={index}>{el.title}</h3>
+              <h3>{el.title}</h3>
             </Link>
           ))}
         </div>
@@ -43,85 +47,25 @@ const ShopPage = () => {
         </h1>
 
         <div className="box-container">
-          <div className="box">
-            <img src={product} alt="" />
-            <h3>ESP8266 WIFI Module</h3>
-            <div className="price">$4.99/ -- 12.99/-</div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalfAlt} />
-            </div>
-            <button type="button" className="btn">
-              Add to Cart
-            </button>
-          </div>
+          {products?.map((el, index) => (
+            <div className="box" key={index}>
+              <img src={el.images} alt="" />
 
-          <div className="box">
-            <img src={product} alt="" />
-            <h3>ESP8266 WIFI Module</h3>
-            <div className="price">$4.99/ -- 12.99/-</div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalfAlt} />
+              {/* <img src={product} alt="" /> */}
+              <h3 key={index}>{el.title}</h3>
+              <div className="price">{el.price}</div>
+              <div className="stars">
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStarHalfAlt} />
+              </div>
+              <button type="button" className="btn">
+                Add to Cart
+              </button>
             </div>
-            <button type="button" className="btn">
-              Add to Cart
-            </button>
-          </div>
-
-          <div className="box">
-            <img src={product} alt="" />
-            <h3>ESP8266 WIFI Module</h3>
-            <div className="price">$4.99/ -- 12.99/-</div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalfAlt} />
-            </div>
-            <button type="button" className="btn">
-              Add to Cart
-            </button>
-          </div>
-
-          <div className="box">
-            <img src={product} alt="" />
-            <h3>ESP8266 WIFI Module</h3>
-            <div className="price">$4.99/ -- 12.99/-</div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalfAlt} />
-            </div>
-            <button type="button" className="btn">
-              Add to Cart
-            </button>
-          </div>
-
-          <div className="box">
-            <img src={product} alt="" />
-            <h3>ESP8266 WIFI Module</h3>
-            <div className="price">$4.99/ -- 12.99/-</div>
-            <div className="stars">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStarHalfAlt} />
-            </div>
-            <button type="button" className="btn">
-              Add to Cart
-            </button>
-          </div>
+          ))}
         </div>
       </section>
     </div>
