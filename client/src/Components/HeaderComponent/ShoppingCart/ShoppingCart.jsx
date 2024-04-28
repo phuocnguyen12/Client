@@ -11,7 +11,7 @@ const ShoppingCart = ({ active }) => (
       <FontAwesomeIcon className="trash-icon" icon={faTrash} />
       <img src={device} alt="Product" />
       <div className="content">
-        <h3>watermelon</h3>
+        <h3>ModuleESP</h3>
         <span className="price">$4.99</span>
         <span className="quantity">qty: 1</span>
       </div>
@@ -20,7 +20,7 @@ const ShoppingCart = ({ active }) => (
       <FontAwesomeIcon className="trash-icon" icon={faTrash} />
       <img src={device} alt="Product" />
       <div className="content">
-        <h3>onion</h3>
+        <h3>ModuleESP</h3>
         <span className="price">$4.99</span>
         <span className="quantity">qty: 1</span>
       </div>
@@ -29,7 +29,7 @@ const ShoppingCart = ({ active }) => (
       <FontAwesomeIcon className="trash-icon" icon={faTrash} />
       <img src={device} alt="Product" />
       <div className="content">
-        <h3>chicken</h3>
+        <h3>ModuleESP</h3>
         <span className="price">$4.99</span>
         <span className="quantity">qty: 1</span>
       </div>

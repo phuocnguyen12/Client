@@ -4,13 +4,14 @@ import gallery from "../../assets/ram-memory.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
+import "./AboutPage.scss"
 
 const AboutPage = () => {
     return (
       <div>
         <section className="about">
           <h1 className="heading">
-            <span>About</span>
+            <span>About Us</span>
           </h1>
 
           <div className="about-container">
@@ -91,6 +92,24 @@ const AboutPage = () => {
             </div>
           </div>
           
+          <div className="box">
+            <img src={gallery} alt="" />
+            <div className="icons">
+              <FontAwesomeIcon className="icon-item" icon={faHeart} />
+              <FontAwesomeIcon className="icon-item" icon={faEye} />
+              <FontAwesomeIcon className="icon-item" icon={faShare} />
+            </div>
+          </div>
+
+          <div className="box">
+            <img src={gallery} alt="" />
+            <div className="icons">
+              <FontAwesomeIcon className="icon-item" icon={faHeart} />
+              <FontAwesomeIcon className="icon-item" icon={faEye} />
+              <FontAwesomeIcon className="icon-item" icon={faShare} />
+            </div>
+          </div>
+
           <div className="box">
             <img src={gallery} alt="" />
             <div className="icons">
