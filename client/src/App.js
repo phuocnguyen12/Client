@@ -3,7 +3,7 @@ import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import { routes } from "./routes";
 import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
 import { useDispatch } from "react-redux";
-import { getCategories } from "./store/asyncActions";
+import { getCategories } from "./store/app/asyncActions";
 
 
 function App() {

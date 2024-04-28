@@ -11,10 +11,14 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.scss";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const slides = [device1, device2, device3];
   const [index, setIndex] = useState(0);
+  // const { isLoggedIn, current } = useSelector(state => state.user)
+
+  // console.log({isLoggedIn, current})
   const handleSlideChange = (increment) => {
     const newIndex = (index + increment + slides.length) % slides.length;
     setIndex(newIndex);

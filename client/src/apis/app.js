@@ -6,10 +6,3 @@ export const getCategories = () =>
     url: "/productcategory/",
     method: "get",
   });
-
-//Product
-export const getProducts = () =>
-  axios({
-    url: "/product/",
-    method: "get",
-  });
