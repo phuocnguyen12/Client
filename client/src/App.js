@@ -4,13 +4,7 @@ import { routes } from "./routes";
 import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
 
 function App() {
-  // const fetchApi = async () =>{
-  //   const res = await axios.get(`http://locahost:3000/product/getAll`);
-  //   return res.data;
-  // };
-
-  // const query = useQuery({ queryKey : ["todos"], queryFn : fetchApi });
-
+  
   return (
     <div>
       <Router>

@@ -1,123 +1,144 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faEnvelope,
+  faMapMarkerAlt,
+  faPhone,
+  faShoppingBasket,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./FooterComponent.scss";
+import {
+  faFacebookF,
+  faInstagram,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 const FooterComponent = () => {
   return (
-    <section className="footer">
+    <footer className="footer" id="footer">
       <div className="box-container">
         <div className="box">
-          <h3>Quick Link</h3>
+          <FontAwesomeIcon icon={["fas", "faUser"]} />
+          <h3>
+            grocery
+            <i>
+              <FontAwesomeIcon icon={faShoppingBasket} />
+            </i>
+          </h3>
+          <p>
+            Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Natus,
+            Laudantium?
+          </p>
+          <div className="share">
+            <Link className="social" to="/">
+              <i>
+                <FontAwesomeIcon className="fa-icon" icon={faFacebookF} />
+              </i>
+            </Link>
+            <Link className="social" to="/">
+              <i>
+                <FontAwesomeIcon className="fa-icon" icon={faInstagram} />
+              </i>
+            </Link>
+            <Link className="social" to="/">
+              <i>
+                <FontAwesomeIcon className="fa-icon" icon={faTwitter} />
+              </i>
+            </Link>
+            <Link className="social" to="/">
+              <i>
+                <FontAwesomeIcon className="fa-icon" icon={faLinkedin} />
+              </i>
+            </Link>
+          </div>
+        </div>
 
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Home
+        <div className="box">
+          <h3>Contact Info</h3>
+          <Link to="/" className="links">
+            <i>
+              <FontAwesomeIcon icon={faPhone} />
+            </i>
+            +84 000 0000
           </Link>
 
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Shop
+          <Link to="/" className="links">
+            <i>
+              <FontAwesomeIcon icon={faPhone} />
+            </i>
+            +84 000 0000
           </Link>
 
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Service
+          <Link to="/" className="links" id="emailLink">
+            <i>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </i>
+            Name@email.com
           </Link>
-
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Review
-          </Link>
-
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Blog
-          </Link>
-
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            About
-          </Link>
-
-          <Link className="menu-footer" to={"#"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Contact
+          
+          <Link to="/" className="links">
+            <i>
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+            </i>
+            Alabama,USA
           </Link>
         </div>
 
         <div className="box">
-          <h3>Extra Links</h3>
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            My Order
+          <h3>quick info</h3>
+          <Link to="#home" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            home
           </Link>
-
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            My Favorite
+          <Link to="#features" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            features
           </Link>
-
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            My Wishlist
+          <Link to="#products" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            products
           </Link>
-
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            My Account
+          <Link to="#categories" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            categories
           </Link>
-
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Term of Use
+          <Link to="#reviews" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            reviews
           </Link>
-
-          <Link className="menu-footer" to={"0"}>
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Contact
-          </Link>
-        </div>
-
-        <div className="box">
-          <h3>Follow us</h3>
-          <Link to={"#"} className="menu-footer">
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Facebook
-          </Link>
-
-          <Link to={"#"} className="menu-footer">
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Instagram
-          </Link>
-
-          <Link to={"#"} className="menu-footer">
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            X-Twitter
-          </Link>
-
-          <Link to={"#"} className="menu-footer">
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Linkedin
-          </Link>
-
-          <Link to={"#"} className="menu-footer">
-            <FontAwesomeIcon className="arrow-icon" icon={faArrowRight} />
-            Printerest
+          <Link to="#blogs" className="links">
+            <i>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </i>
+            blogs
           </Link>
         </div>
 
         <div className="box">
           <h3>NewLetter</h3>
           <p>Subscribe for Lastest Updates</p>
-          <form action="">
-            <input type="email" placeholder="Enter Your Email" />
-            <input type="submit" value="subscribe" className="btn" />
-          </form>
+          <input type="text" placeholder="Your email" />
+          <button type="button" className="btn">
+            Subscribe
+          </button>
+          <img src="images/payment.png" alt="" />
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

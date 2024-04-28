@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/logo.png";
-import device from "../../assets/ModuleESP.png";
 import "./HeaderComponent.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,12 +10,23 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import Navbar from "./Navbar/Navbar";
+import SearchForm from "./SearchForm/SearchForm";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import UserForm from "./UserForm/UserForm";
 
 const Header = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
   const [isActiveAuth, setIsActiveAuth] = useState(false);
   const [isActiveMenu, setIsActiveMenu] = useState(false);
+
+  window.onscroll = () => {
+    setIsActiveMenu(false);
+    setIsActiveCart(false);
+    setIsActiveAuth(false);
+    setIsActiveSearch(false);
+  };
 
   const handleSearchClick = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
@@ -34,7 +44,7 @@ const Header = () => {
 
   const handleAuthClick = () => {
     setIsActiveAuth((prevVisible) => !prevVisible);
-    setIsActiveSearch(false)
+    setIsActiveSearch(false);
     setIsActiveCart(false);
     setIsActiveMenu(false);
   };
@@ -43,118 +53,36 @@ const Header = () => {
     setIsActiveMenu((prevVisible) => !prevVisible);
     setIsActiveAuth(false);
     setIsActiveCart(false);
-    setIsActiveSearch(false)
+    setIsActiveSearch(false);
   };
 
   return (
     <header className="header">
       {/* Logo */}
-      <Link className="logo" to={"#"}>
+      <Link className="logo" to={"/"}>
         <img src={logoImage} alt="logo" />
       </Link>
 
-      {/* Navbar */}
-      <nav className={`navbar ${isActiveMenu ? "active" : ""}`}>
-        <Link className="menu-link" to={"/"}>
-          Home
-        </Link>
-        <Link className="menu-link" to={"/shop"}>
-          Shop
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Service
-        </Link>
-        <Link className="menu-link" to={"/review"}>
-          Review
-        </Link>
-        <Link className="menu-link" to={"/blog"}>
-          Blog
-        </Link>
-        <Link className="menu-link" to={"/about"}>
-          About
-        </Link>
-        <Link className="menu-link" to={"/contact"}>
-          Contact
-        </Link>
-      </nav>
+      <Navbar active={isActiveMenu} />
 
-      {/* Icon */}
       <div className="icons">
-        {/* Menu Icon */}
-        <div className="items" id="menu-btn" onClick={handleMenuClick}>
-          <FontAwesomeIcon icon={faBars} />
-        </div>
-
-        {/* Search Icon */}
-        <div className="items" id="search-btn" onClick={handleSearchClick}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </div>
-
-        {/* Cart Icon */}
-        <div className="items" id="cart-btn" onClick={handleCartClick}>
-          <FontAwesomeIcon icon={faCartShopping} />
-        </div>
-
-        {/* User Icon */}
-        <div className="items" id="user-btn" onClick={handleAuthClick}>
-          <FontAwesomeIcon icon={faUser} />
-        </div>
+        <button type="button" id="menu-btn" onClick={handleMenuClick}>
+          <FontAwesomeIcon className="fa-icon" icon={faBars} />
+        </button>
+        <button type="button" id="search-btn" onClick={handleSearchClick}>
+          <FontAwesomeIcon className="fa-icon" icon={faMagnifyingGlass} />
+        </button>
+        <button type="button" id="cart-btn" onClick={handleCartClick}>
+          <FontAwesomeIcon className="fa-icon" icon={faCartShopping} />
+        </button>
+        <button type="button" id="user-btn" onClick={handleAuthClick}>
+          <FontAwesomeIcon className="fa-icon" icon={faUser} />
+        </button>
       </div>
 
-      {/* Search Form */}
-      <form action="" className={`search-form ${isActiveSearch ? "active" : ""}`}>
-        <input type="search" placeholder="Search here..." id="search-box" />
-        <label htmlFor="search-box" className="search">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </label>
-      </form>
-
-      {/* Shopping Cart */}
-      <div className={`shopping-cart ${isActiveCart ? "active" : ""}`}>
-        <div className="box">
-          <FontAwesomeIcon icon={faTrashCan} className="trash" />
-          <img src={device} alt="device" />
-          <div className="content">
-            <h3>Module Sensor</h3>
-            <span className="quantity">2</span>
-            <span className="multiply">x</span>
-            <span className="price">$12.99</span>
-          </div>
-        </div>
-
-        <div className="box">
-          <FontAwesomeIcon icon={faTrashCan} className="trash" />
-          <img src={device} alt="device" />
-          <div className="content">
-            <h3>Module Sensor</h3>
-            <span className="quantity">2</span>
-            <span className="multiply">x</span>
-            <span className="price">$12.99</span>
-          </div>
-        </div>
-
-        <div className="box">
-          <FontAwesomeIcon icon={faTrashCan} className="trash" />
-          <img src={device} alt="device" />
-          <div className="content">
-            <h3>Module Sensor</h3>
-            <span className="quantity">2</span>
-            <span className="multiply">x</span>
-            <span className="price">$12.99</span>
-          </div>
-        </div>
-        <h3 className="total">
-          Total: <span>$38.97</span>
-        </h3>
-        <Link to={"#"} className="btn">
-          Check Out
-        </Link>
-      </div>
-
-      {/* Auth Form */}
-      <form action="" className={`auth-form ${isActiveAuth ? "active" : ""}`}>
-        <h3>Auth Form</h3>
-      </form>
+      <SearchForm active={isActiveSearch} />
+      <ShoppingCart active={isActiveCart} />
+      <UserForm active={isActiveAuth} />
     </header>
   );
 };

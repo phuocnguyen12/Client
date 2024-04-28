@@ -5,32 +5,15 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {  useState } from "react";
+import { Link } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
 import "./LoginPage.scss";
-import { useMutationHooks } from "../../hooks/useMutationHook";
-import * as UserService from "../../services/UserService";
-import Loading from "../../Components/LoadingComponent/Loading";
-import { message } from "antd";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const mutation = useMutationHooks((data) => UserService.loginUser(data));
-
-  const { data, isLoading } = mutation;
-
-  useEffect(() => {
-    if (data?.message === "SUCCESS") {
-      message.success();
-      navigate("/register");
-    }
-  }, [data, navigate]);
-
-  console.log("mutation: ", mutation);
+  
 
   const handleOnChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -40,19 +23,13 @@ const LoginPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    mutation.mutate({
-      email,
-      password,
-    });
-  };
-
+  
   return (
     <div className="container">
       <div className="form-login">
         <img src={logoImage} alt="logo" className="logo" />
         <br />
-        <h1 className="heading">Login</h1>
+        <h1 className="login">Login</h1>
         <p className="sub-text">Hello, Login To Continue !</p>
         <br />
         <p className="sub-text">
@@ -76,12 +53,9 @@ const LoginPage = () => {
             placeholder="Enter Your Password"
             className="input-text"
           />
-          {data?.status === "ERROR" && (
-            <span className="error">{data?.message}</span>
-          )}
-          <Loading isLoading={isLoading}>
-            <button onClick={handleLogin}>Login</button>
-          </Loading>
+          {<span className="error">error</span>}
+
+          <button>Login</button>
         </div>
         <p className="forgot-pass">Forgot password ?</p>
         <div className="or">

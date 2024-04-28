@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {getCategories} from "../../api/app"
 import banner1 from "../../assets/icon-device.png";
 import product from "../../assets/arduino-nano.png";
 import "./ShopPage.scss";
@@ -12,6 +13,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const ShopPage = () => {
+  const [categories, setCategories] = useState(null);
+  const fetchCategories = async () => {
+    const response = await getCategories();
+    if (response.success) {
+      setCategories(response.getAllCategory);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+  console.log(categories);
+
   return (
     <div>
       <div className="heading">

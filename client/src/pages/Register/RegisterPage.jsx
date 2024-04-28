@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
-import "./RegisterPage.scss";
-import { useMutationHooks } from "../../hooks/useMutationHook";
-import * as UserServices from "../../services/UserService";
 import Loading from "../../Components/LoadingComponent/Loading";
-import { message } from "antd";
+import "./RegisterPage.scss";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
-
-  const mutation = useMutationHooks((data) => UserServices.registerUser(data));
-
-  const { data, isLoading } = mutation;
-
-  useEffect(() => {
-    if(data?.message === "SUCCESS") {
-      message.success()
-      navigate("/login")
-    }
-  }, [data, navigate])
 
   const handleOnChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -41,16 +26,12 @@ const RegisterPage = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleRegister = () => {
-    mutation.mutate({ email, name, password, confirmPassword });
-  };
-
   return (
     <div className="container">
       <div className="form-register">
         <img src={logoImage} alt="logo" className="logo" />
         <br />
-        <h1 className="heading">Register</h1>
+        <h1 className="register">Register</h1>
         <p className="sub-text">
           Already have account?{" "}
           <Link to="/login" className="sub-link">
@@ -99,11 +80,9 @@ const RegisterPage = () => {
               Accept terms and services
             </label>
           </div>
-          {data?.state === "ERROR" && (
-            <span className="error">{data?.message}</span>
-          )}
-          <Loading isLoading={isLoading}>
-            <button onClick={handleRegister}>Register</button>
+          {<span className="error">error</span>}
+          <Loading>
+            <button>Register</button>
           </Loading>
         </div>
       </div>
