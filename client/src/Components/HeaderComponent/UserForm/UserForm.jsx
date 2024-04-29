@@ -2,21 +2,38 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./UserForm.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrent } from "../../../store/user/asyncActions.js";
-import { logout } from "../../../store/user/userSlice.js";
+import Swal from "sweetalert2";
+import { getCurrent } from "../../../store/user/asyncActions";
+import { clearMessage, logout } from "../../../store/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const UserForm = ({ active }) => {
   const dispatch = useDispatch();
-  const { isLoggedIn, current } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { isLoggedIn, current, mes } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(getCurrent());
-    }
+    const setTimeoutId = setTimeout(() => {
+      if (isLoggedIn) {
+        dispatch(getCurrent());
+      }
+    }, 300);
+    return () => {
+      clearTimeout(setTimeoutId);
+    };
   }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (mes) {
+      Swal.fire("Oops!", mes, "info").then(() => {
+        dispatch(clearMessage());
+        navigate("/login");
+      });
+    }
+  }, [mes]);
   return (
     <form className={`user-form ${active ? "active" : ""}`}>
-      {isLoggedIn ? (
+      {isLoggedIn && current ? (
         <div>
           {`welcome,${current?.firstname} ${current?.lastname}`}
           <button className="btn" onClick={() => dispatch(logout())}>
@@ -25,7 +42,7 @@ const UserForm = ({ active }) => {
         </div>
       ) : (
         <div>
-          <h3>Login Now</h3>
+          <h3>login now</h3>
           <div className="box">
             <input type="email" placeholder="your email" />
           </div>
@@ -33,13 +50,13 @@ const UserForm = ({ active }) => {
             <input type="password" placeholder="your password" />
           </div>
           <p>
-            Forgot Your Password <a href="/">Click Here</a>
+            forgot your password <a href="/">click here</a>
           </p>
           <p>
-            Don't Have An Account <a href="/">Create Now</a>
+            don&apos;t have an account <a href="/">create now</a>
           </p>
           <button type="submit" className="btn">
-            Login Now
+            login now
           </button>
         </div>
       )}

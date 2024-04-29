@@ -8,32 +8,45 @@ export const userSlice = createSlice({
     current: null,
     token: null,
     isLoading: false,
+    mes: "",
   },
   reducers: {
     login: (state, action) => {
       state.isLoggedIn = action.payload.isLoggedIn;
       state.token = action.payload.token;
     },
+
     logout: (state, action) => {
       state.isLoggedIn = false;
       state.token = null;
     },
+
+    clearMessage: (state) => {
+      state.mes = "";
+    },
   },
+
   extraReducers: (builder) => {
     builder.addCase(actions.getCurrent.pending, (state) => {
       state.isLoading = true;
     });
+
     builder.addCase(actions.getCurrent.fulfilled, (state, action) => {
       state.isLoading = false;
       state.current = action.payload;
+      state.isLoggedIn = true
       // console.log(state.current)
     });
+    
     builder.addCase(actions.getCurrent.rejected, (state, action) => {
       state.isLoading = false;
       state.current = null;
+      state.isLoggedIn = false;
+      state.token = null;
+      state.mes = "Login session expired, please log in again!";
     });
   },
 });
-export const { login, logout } = userSlice.actions;
+export const { login, logout, clearMessage } = userSlice.actions;
 
 export default userSlice.reducer;
