@@ -34,6 +34,7 @@ const ShoppingCart = ({ active }) => (
         <span className="quantity">qty: 1</span>
       </div>
     </div>
+    <div className="btn">Check Out</div>
   </div>
 );
 

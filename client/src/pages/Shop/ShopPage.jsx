@@ -5,13 +5,17 @@ import banner1 from "../../assets/icon-device.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { Pagination } from "../../Components";
+import ProductDetail from "../../Components/ProductDetail/ProductDetail";
 import "./ShopPage.scss";
 
 const ShopPage = () => {
   const { categories } = useSelector((state) => state.app);
   const [products, setProducts] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const fetchProducts = async () => {
     const product = await getProducts();
+    console.log(product);
     if (product.success) {
       setProducts(product.products);
     }
@@ -19,7 +23,15 @@ const ShopPage = () => {
       getProducts({ sort: "-sold" }),
       getProducts({ sort: "-createdAt" }),
     ]);
-    console.log({ bestSeller, newProducts });
+    // console.log({ bestSeller, newProducts });
+  };
+
+  const handleViewDetail = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedProduct(null);
   };
 
   useEffect(() => {
@@ -63,13 +75,26 @@ const ShopPage = () => {
                 <FontAwesomeIcon icon={faStar} />
                 <FontAwesomeIcon icon={faStarHalfAlt} />
               </div>
-              <button type="button" className="btn">
-                Add to Cart
+              {/* <Link to={`/details/${el._id}`} className="btn">
+                add to cart
+              </Link> */}
+              <button className="btn" onClick={() => handleViewDetail(el)}>
+                View details
               </button>
             </div>
           ))}
+          {selectedProduct && (
+            <ProductDetail
+              product={selectedProduct}
+              onClose={handleCloseDetail}
+            />
+          )}
         </div>
       </section>
+
+      <div className="w-4/6 text-xl m-auto my-4 flex justify-end">
+        <Pagination />
+      </div>
     </div>
   );
 };
