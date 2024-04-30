@@ -6,12 +6,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { apiLogin } from "../../apis/user";
 import logoImage from "../../assets/Logo-main.png";
+import { Loading } from "../../Components";
+import { showModal } from "../../store/app/appSlice";
 import "./LoginPage.scss";
-import { useDispatch } from "react-redux";
-import {login} from "../../store/user/userSlice"
+import { login } from "../../store/user/userSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -30,12 +32,20 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
+      <Loading />;
+      dispatch(showModal({ isShowModal: true, modalChildren: <Loading /> }));
       const response = await apiLogin(email, password);
 
       if (response.success) {
         setError(response.message);
         setTimeout(() => {
-          dispatch(login({isLoggedIn: true, token: response.accessToken, userData: response.userData}))
+          dispatch(
+            login({
+              isLoggedIn: true,
+              token: response.accessToken,
+              userData: response.userData,
+            })
+          );
           navigate("/"); // Navigate to the home page route
         }, 3000); // 3000 milliseconds (3 seconds)
       } else {
@@ -65,7 +75,7 @@ const LoginPage = () => {
         <p className="sub-text">Hello, Login To Continue !</p>
         <br />
         <p className="sub-text">
-          Don't have an account?{" "}
+          Don't have an account? 
           <Link to="/register" className="sub-link">
             Register and get started!
           </Link>
