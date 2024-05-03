@@ -5,7 +5,13 @@ export const apiLogin = (email, password) => {
 };
 
 export const register = (email, firstname, lastname, password, mobile) => {
-  return axios.post("/user/register", { email, firstname, lastname, password, mobile });
+  return axios.post("/user/register", {
+    email,
+    firstname,
+    lastname,
+    password,
+    mobile,
+  });
 };
 
 export const current = () => {
@@ -44,4 +50,10 @@ export const deleteUser = (uid) =>
       url: "/user/update",
       method: "put",
       data
+    });
+
+    export const removeCart = (pid) =>
+    axios({
+      url: "/user/remove-cart/" + pid,
+      method: "delete",
     });
