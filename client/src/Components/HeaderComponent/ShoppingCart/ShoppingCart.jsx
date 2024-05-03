@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { removeCart } from "../../../apis";
 import { getCurrent } from "../../../store/user/asyncActions";
 import { toast } from "react-toastify";
+import path from "../../../ultils/path"
 
 const ShoppingCart = ({ active }) => {
   const { current } = useSelector((state) => state.user);
@@ -54,7 +55,7 @@ const ShoppingCart = ({ active }) => {
           </div>
         ))}
       <div className="border-t my-4"></div>
-      <div className="btn" onClick={() => navigate("/checkout")}>
+      <div className="btn" onClick={() => navigate(`/member/${path.MY_CART}`)}>
         check out
       </div>
     </div>

@@ -12,17 +12,17 @@ import {
   ManageUsers,
 } from "./pages/Admin";
 import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCategories } from "./store/app/asyncActions";
 import path from "./ultils/path";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch();
-  const { isShowModal, modalChildren } = useSelector((state) => state.app);
+  // const { isShowModal, modalChildren } = useSelector((state) => state.app);
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, );
 
   return (
     <div>

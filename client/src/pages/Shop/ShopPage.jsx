@@ -60,6 +60,9 @@ const ShopPage = () => {
     const queries = Object.fromEntries([...params]);
     fetchProducts(queries);
   }, [params]);
+
+  console.log(products)
+
   return (
     <div>
       <section className="category">
