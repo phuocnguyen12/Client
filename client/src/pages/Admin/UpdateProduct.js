@@ -76,9 +76,9 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 relative text-black bg-orange-400">
+    <div className="w-full flex flex-col gap-4 relative text-black bg-blue-400">
       <div className="h-[69px] w-full"></div>
-      <div className="p-4 border-b w-full bg-orange-400 flex justify-between items-center fixed top-0">
+      <div className="p-4 border-b w-full bg-blue-400 flex justify-between items-center fixed top-0">
         <h1 className="text-3xl font-bold tracking-tight">Update Product</h1>
       </div>
 

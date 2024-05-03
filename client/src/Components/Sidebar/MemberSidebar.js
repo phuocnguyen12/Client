@@ -3,9 +3,10 @@ import React, { Fragment, memo, useState } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { FaAnglesDown } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import avatar from "../../assets/icon-user.png";
 import { memberSidebar } from "../../ultils/contants";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 const activedStyle = "px-4 py-2 flex items-center gap-2 bg-gray-300";
 const notActivedStyle = "px-4 py-2 flex items-center gap-2 hover:bg-gray-200";
@@ -27,15 +28,15 @@ const MemberSidebar = () => {
         <img
           src={current?.avatar || avatar}
           alt="logo"
-          className="w-16 h-16 object-cover"
+          className="w-22 h-22 rounded-full"
         />
 
-        <small className="text-black">{`${current?.lastname} ${current?.firstname}`}</small>
+        <small className="font-bold text-3xl my-6 border-b">{`${current?.lastname} ${current?.firstname}`}</small>
       </div>
 
-      <div>
+      <div className="text-xl">
         {memberSidebar.map((el) => (
-          <NavLink className="text-orange-600">
+          <NavLink className="text-blue-600">
             <Fragment key={el.id}>
               {el.type === "SINGLE" && (
                 <NavLink
@@ -90,6 +91,12 @@ const MemberSidebar = () => {
             </Fragment>
           </NavLink>
         ))}
+      </div>
+
+      <div className="flex flex-col items-center justify-center">
+        <Link to={"/"}>
+          <IoChevronBackCircleOutline className="w-20 h-20 text-blue-500" />
+        </Link>
       </div>
     </div>
   );
