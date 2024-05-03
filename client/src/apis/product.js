@@ -35,3 +35,10 @@ export const createProduct = (data) =>
     url: "/product/" + pid,
     method: "delete",
   });
+
+  export const createOrder = (data) =>
+  axios({
+    url: "/order/",
+    method: "post",
+    data
+  });

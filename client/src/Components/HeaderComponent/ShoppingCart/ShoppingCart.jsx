@@ -27,7 +27,7 @@ const ShoppingCart = ({ active }) => {
   };
   return (
     <div className={`shopping-cart ${active ? "active" : ""}`}>
-      <div class="flex items-center justify-center my-4 pb-4 text-6xl font-bold border-b text-blue-400">
+      <div className="flex items-center justify-center my-4 pb-4 text-6xl font-bold border-b text-blue-400">
         <div>Your Cart</div>
       </div>
       {!current?.cart && (
