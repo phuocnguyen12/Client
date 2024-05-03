@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import the base styles */
+@import 'tailwindcss/base';
+
+/* Import component classes */
+@import 'tailwindcss/components';
+
+/* Apply utility classes */
+@import 'tailwindcss/utilities';
 
 * {
   text-transform: capitalize;
@@ -12,7 +17,7 @@
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
-  border: none;
+  // border: none;
   transition: all linear 0.2s;
 }
 
