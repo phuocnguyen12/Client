@@ -11,3 +11,17 @@ export const register = (email, firstname, lastname, password) => {
 export const current = () => {
   return axios.get("/user/current");
 };
+
+export const getAllUsers = (params) =>
+  axios({
+    url: "/user/",
+    method: "get",
+    params,
+  });
+
+  export const updateCart = (data) =>
+  axios({
+    url: "/user/cart",
+    method: "put",
+    data,
+  });
