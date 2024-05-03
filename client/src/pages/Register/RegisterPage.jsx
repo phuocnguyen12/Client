@@ -60,8 +60,7 @@ const RegisterPage = () => {
       } else {
         setError(response.message);
       }
-
-      console.log("Register successful:", response);
+      
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         setError(error.response.data.error);

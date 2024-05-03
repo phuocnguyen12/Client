@@ -6,20 +6,17 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Order = ({ el, updateSubtotal }) => {
-  const [quantity, setQuantity] = useState(el.quantity);
-  const dispatch = useDispatch();
-  const productPrice = el.product.price;
+const Order = ({ el, handleChangeQuantities, defaultQuantity = 1 }) => {
+  const [quantity, setQuantity] = useState(() => defaultQuantity);
+  const dispatch = useDispatch;
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
-    updateSubtotal(productPrice, quantity + 1);
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      updateSubtotal(productPrice, quantity - 1);
     }
   };
 
@@ -33,8 +30,9 @@ const Order = ({ el, updateSubtotal }) => {
   };
 
   useEffect(() => {
-    updateSubtotal();
-  }, [quantity, updateSubtotal]);
+    handleChangeQuantities &&
+      handleChangeQuantities(el?.product?._id, quantity);
+  }, [quantity]);
 
   return (
     <div>
