@@ -14,7 +14,7 @@ const InputField = ({
   isHideLabel,
 }) => {
   return (
-    <div className={clsx("flex flex-col relative mb-2", fullWidth && "w-full")}>
+    <div className={clsx("flex flex-col mb-2", fullWidth && "w-full")}>
       {!isHideLabel && value.trim() !== "" && (
         <label
           className="text-[10px] animate-slide-top-sm absolute top-0 left-[12px] block bg-white px-1"

@@ -8,3 +8,4 @@ export { default as InputSelect } from "./inputs/Select";
 export { default as InputForm } from "./inputs/InputForm";
 export { default as Select } from "./inputs/Select";
 export { default as MarkdownEditor } from "./inputs/MarkdownEditor";
+export { default as MemberSidebar } from "./Sidebar/MemberSidebar";

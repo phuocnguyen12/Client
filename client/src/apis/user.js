@@ -4,8 +4,8 @@ export const apiLogin = (email, password) => {
   return axios.post("/user/login", { email, password });
 };
 
-export const register = (email, firstname, lastname, password) => {
-  return axios.post("/user/register", { email, firstname, lastname, password });
+export const register = (email, firstname, lastname, password, mobile) => {
+  return axios.post("/user/register", { email, firstname, lastname, password, mobile });
 };
 
 export const current = () => {
@@ -38,3 +38,10 @@ export const deleteUser = (uid) =>
     method: "put",
     data,
   });
+
+  export const updateCurrent = (data) =>
+    axios({
+      url: "/user/update",
+      method: "put",
+      data
+    });

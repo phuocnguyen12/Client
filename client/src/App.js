@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import { routes } from "./routes";
-import { MemberLayout, Personal } from "./pages/Member";
+import { Wishlist, MyCart, History, MemberLayout, Personal } from "./pages/Member";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import {
   AdminLayout,
@@ -53,6 +53,9 @@ function App() {
           </Route>
           <Route path={path.MEMBER} element={<MemberLayout />}>
             <Route path={path.PERSONAL} element={<Personal />} />
+            <Route path={path.HISTORY} element={<History />} />
+            <Route path={path.MY_CART} element={<MyCart />} />
+            <Route path={path.WISHLIST} element={<Wishlist />} />
           </Route>
           <Route path={path.ALL} element={<NotFoundPage />} />
         </Routes>

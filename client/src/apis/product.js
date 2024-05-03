@@ -22,3 +22,10 @@ export const createProduct = (data) =>
 
     data,
   });
+
+  export const updateProduct = (data, pid) =>
+  axios({
+    url: "/product/" + pid,
+    method: "put",
+    data,
+  });

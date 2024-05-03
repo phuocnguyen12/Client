@@ -43,9 +43,17 @@
     }
   }
 
-  button {
+  .btn-login {
+    margin: 4px;
     &:hover {
       background: $blue;
+    }
+  }
+
+  .btn-register {
+    margin: 4px;
+    &:hover {
+      background: gray;
     }
   }
 }

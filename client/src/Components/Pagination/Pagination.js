@@ -10,7 +10,7 @@ const Pagination = ({ totalCount }) => {
   const range = () => {
     const currentPage = +params.get("page");
     const pageSize = +process.env.REACT_APP_LIMIT || 10;
-    const start = (currentPage - 1) * pageSize + 1;
+    const start = Math.min((currentPage - 1) * pageSize + 1, totalCount);
     const end = Math.min(currentPage * pageSize, totalCount);
 
     return `${start} - ${end}`;
@@ -25,7 +25,13 @@ const Pagination = ({ totalCount }) => {
         ""
       )}
       {+params.get("page") ? (
-        <span className="text-sm italic">{`Show products ${range()} of ${totalCount}`}</span>
+        <span className="text-sm italic">{`Show products ${Math.min(
+          totalCount,
+          1
+        )} - ${Math.min(
+          +process.env.REACT_APP_LIMIT,
+          totalCount
+        )} of ${totalCount}`}</span>
       ) : (
         ""
       )}
