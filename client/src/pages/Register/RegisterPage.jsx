@@ -75,7 +75,9 @@ const RegisterPage = () => {
   return (
     <div className="container-bg">
       <div className="form-register">
-        <img src={logoImage} alt="logo" className="logo" />
+      <Link className="logo" to={"/"}>
+          <img src={logoImage} alt="logo" className="logo" />
+        </Link>
         <br />
         <h1 className="register">Register</h1>
         <p className="sub-text">

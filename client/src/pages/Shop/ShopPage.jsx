@@ -46,7 +46,7 @@ const ShopPage = () => {
       });
     const response = await updateCart({ pid: product._id });
     if (response.success) {
-      toast.success("Success");
+      toast.success("Add Success");
       dispatch(getCurrent());
     } else {
       toast.error("Fail");

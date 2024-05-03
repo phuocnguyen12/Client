@@ -69,7 +69,9 @@ const LoginPage = () => {
   return (
     <div className="container-bg">
       <div className="form-login">
-        <img src={logoImage} alt="logo" className="logo" />
+      <Link className="logo" to={"/"}>
+          <img src={logoImage} alt="logo" className="logo" />
+        </Link>
         <br />
 
         <h1 className="login">Login</h1>
