@@ -3,6 +3,7 @@ import { Button, InputForm, MarkdownEditor, Select } from "../../Components";
 import { createProduct } from "../../apis/product";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const CreateProducts = () => {
   const { categories } = useSelector((state) => state.app);
@@ -44,7 +45,11 @@ const CreateProducts = () => {
     }
 
     const response = await createProduct(formData);
-    console.log(response);
+    if (response.success) {
+      toast.success("Success");
+      reset();
+      setPayload({ images: "" });
+    } else toast.error("Fail");
   };
 
   return (
