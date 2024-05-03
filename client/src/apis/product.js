@@ -29,3 +29,9 @@ export const createProduct = (data) =>
     method: "put",
     data,
   });
+
+  export const deleteProduct = (pid) =>
+  axios({
+    url: "/product/" + pid,
+    method: "delete",
+  });

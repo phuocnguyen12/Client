@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { InputField, InputForm, Pagination } from "../../Components";
-import { getProducts } from "../../apis/product";
+import { deleteProduct, getProducts } from "../../apis/product";
 import { useForm } from "react-hook-form";
 import moment from "moment/moment";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";
-import UpdateProduct from "./UpdateProduct"
+import UpdateProduct from "./UpdateProduct";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const ManageProducts = () => {
   const [params] = useSearchParams();
@@ -45,6 +47,24 @@ const ManageProducts = () => {
 
   const queriesDebounce = useDebounce(queries.q, 800);
 
+  const handleDeleteProduct = (uid) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Ready remove this user?",
+      showCancelButton: true,
+    }).then(async (rs) => {
+      if (rs.isConfirmed) {
+        const response = await deleteProduct(uid);
+        if (response.success) {
+          render();
+          toast.success(response.mes);
+        } else {
+          toast.error(response.mes);
+        }
+      }
+    });
+  };
+
   useEffect(() => {
     const queries = Object.fromEntries([...params]);
 
@@ -58,7 +78,11 @@ const ManageProducts = () => {
     <div className="w-full pl-8 flex flex-col gap-4 relative">
       {editProduct && (
         <div className="absolute inset-0 min-h-screen bg-gray-100 z-50">
-          <UpdateProduct editProduct={editProduct} render={render} setEditProduct={ setEditProduct} />
+          <UpdateProduct
+            editProduct={editProduct}
+            render={render}
+            setEditProduct={setEditProduct}
+          />
         </div>
       )}
       <div className="w-full"></div>
@@ -69,7 +93,7 @@ const ManageProducts = () => {
       </div>
 
       <div className="flex w-full justify-end items-center text-black px-4">
-      <form className="w-[45%]">
+        <form className="w-[45%]">
           <InputField
             className="text-black"
             nameKey={"q"}
@@ -100,7 +124,7 @@ const ManageProducts = () => {
         <tbody>
           {products?.map((el, idx) => (
             <tr key={el._id} className="text-center py-2">
-            <td>
+              <td>
                 {(+params.get("page") > 1 ? +params.get("page") - 1 : 0) *
                   process.env.REACT_APP_LIMIT +
                   (idx + 1)}
@@ -121,11 +145,17 @@ const ManageProducts = () => {
                 {moment(el.createdAt).format("DD/MM/YYYY")}
               </td>
               <td className="text-center py-2">
-                <span onClick={() => setEditProduct(el)} className="text-blue-500 hover:underline cursor-pointer px-1">
-                  edit
+              <span
+                  onClick={() => setEditProduct(el)}
+                  className="text-blue-500 hover:underline cursor-pointer px-1"
+                >
+                  Edit
                 </span>
-                <span className="text-red-500 hover:underline cursor-pointer px-1">
-                  delete
+                <span
+                  onClick={() => handleDeleteProduct(el._id)}
+                  className="px-2 text-red-500 hover:underline cursor-pointer"
+                >
+                  Delete
                 </span>
               </td>
             </tr>
