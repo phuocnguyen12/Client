@@ -1,10 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { deleteUser, getAllUsers, updateUsers } from "../../apis/user";
 import moment from "moment/moment";
-import { blockStatus,roles } from "../../ultils/contants";
+import { blockStatus, roles } from "../../ultils/contants";
 import { useSearchParams } from "react-router-dom";
-import useDebounce from "../../hooks/useDebounce"
-import { Button, InputField, InputForm, Pagination, Select } from "../../Components";
+import useDebounce from "../../hooks/useDebounce";
+import {
+  Button,
+  InputField,
+  InputForm,
+  Pagination,
+  Select,
+} from "../../Components";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -93,178 +99,179 @@ const ManageUsers = () => {
   }, [editElm]);
 
   return (
-    <div className={clsx("w-full", editElm && "pl-16")}>
-    <h1 className="h-[75px] flex justify-between items-center text-3xl font-bold px-4 border-b border-white">
-      <span>Manage users</span>
-    </h1>
-    <div className="w-full p-4">
-      <div className="flex justify-end py-4">
-        <InputField
-          className="text-black"
-          nameKey={"q"}
-          value={queries.q}
-          setValue={setQueries}
-          placeholder="Search..."
-          isHideLabel
-        />
-      </div>
-      <form onSubmit={handleSubmit(handleUpdate)}>
-        {editElm && <Button type="submit">Submit</Button>}
-        <table className="table-auto mb-6 text-left w-full">
-          <thead className="font-bold bg-gray-700 text-[13px]">
-            <tr className="border border-gray-500">
-              <th className="px-4 py-2">#</th>
-              <th className="px-4 py-2">Email address</th>
-              <th className="px-4 py-2">First name</th>
-              <th className="px-4 py-2">Last name</th>
-              <th className="px-4 py-2">Role</th>
-              <th className="px-4 py-2">Phone</th>
-              <th className="px-4 py-2">Status</th>
-              <th className="px-4 py-2">Create At</th>
-              <th className="px-4 py-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users?.users?.map((el, index) => (
-              <tr key={el._id} className="border border-gray-500 text-black">
-                <td className="py-2 px-4">{index + 1}</td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <InputForm
-                      register={register}
-                      fullWidth
-                      defaultValue={editElm?.email}
-                      errors={errors}
-                      id={"email"}
-                      validate={{
-                        required: true,
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Invalid email address",
-                        },
-                      }}
-                    />
-                  ) : (
-                    <span>{el.email}</span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <InputForm
-                      register={register}
-                      fullWidth
-                      defaultValue={editElm?.firstname}
-                      errors={errors}
-                      id={"firstname"}
-                      validate={{ required: "Require fill" }}
-                    />
-                  ) : (
-                    <span>{el.firstname}</span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <InputForm
-                      register={register}
-                      fullWidth
-                      defaultValue={editElm?.lastname}
-                      errors={errors}
-                      id={"lastname"}
-                      validate={{ required: "Require fill" }}
-                    />
-                  ) : (
-                    <span>{el.lastname}</span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <Select
-                      register={register}
-                      fullWidth
-                      defaultValue={el.role}
-                      errors={errors}
-                      id={"role"}
-                      validate={{ required: "Require fill" }}
-                      options={roles}
-                    />
-                  ) : (
-                    <span>
-                      {roles.find((role) => +role.code === +el.role)?.value}
-                    </span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <InputForm
-                      register={register}
-                      fullWidth
-                      defaultValue={editElm?.mobile}
-                      errors={errors}
-                      id={"mobile"}
-                      validate={{
-                        required: "Require fill",
-                        pattern: {
-                          value: /^[62|0]+\d{9}/gi,
-                          message: "Invalid phone number",
-                        },
-                      }}
-                    />
-                  ) : (
-                    <span>{el.mobile}</span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <Select
-                      register={register}
-                      fullWidth
-                      defaultValue={el.isBlocked}
-                      errors={errors}
-                      id={"isBlocked"}
-                      validate={{ required: "Require fill" }}
-                      options={blockStatus}
-                    />
-                  ) : (
-                    <span> {el.isBlocked ? "Blocked" : "Active"}</span>
-                  )}
-                </td>
-                <td className="py-2 px-4">
-                  {moment(el.createdAt).format("DD/MM/YYYY")}
-                </td>
-                <td className="py-2 px-4">
-                  {editElm?._id === el._id ? (
-                    <span
-                      onClick={() => setEditElm(null)}
-                      className="px-2 text-blue-500 hover:underline cursor-pointer"
-                    >
-                      Back
-                    </span>
-                  ) : (
-                    <span
-                      onClick={() => setEditElm(el)}
-                      className="px-2 text-blue-500 hover:underline cursor-pointer"
-                    >
-                      Edit
-                    </span>
-                  )}
-                  <span
-                    onClick={() => handleDeleteUser(el._id)}
-                    className="px-2 text-red-500 hover:underline cursor-pointer"
-                  >
-                    Delete
-                  </span>
-                </td>
+    <div className={clsx("w-full, text-3xl", editElm && "pl-16")}>
+      <h1 className="h-[75px] flex justify-between items-center text-6xl font-bold px-4 border-b border-white">
+        <span>Manage users</span>
+      </h1>
+      <div className="w-full p-4">
+        <div className="flex justify-end py-4">
+          <InputField
+            className="text-black"
+            nameKey={"q"}
+            value={queries.q}
+            setValue={setQueries}
+            placeholder="Search..."
+            isHideLabel
+            style="p-2 w-10"
+          />
+        </div>
+        <form onSubmit={handleSubmit(handleUpdate)}>
+          {editElm && <Button type="submit">Submit</Button>}
+          <table className="table-auto mb-6 text-left w-full">
+            <thead className="font-bold bg-gray-700 text-[13px]">
+              <tr className="border border-gray-500">
+                <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Email address</th>
+                <th className="px-4 py-2">First name</th>
+                <th className="px-4 py-2">Last name</th>
+                <th className="px-4 py-2">Role</th>
+                <th className="px-4 py-2">Phone</th>
+                <th className="px-4 py-2">Status</th>
+                <th className="px-4 py-2">Create At</th>
+                <th className="px-4 py-2">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </form>
-      <div className="w-full flex">
-        <Pagination totalCount={users?.counts} />
+            </thead>
+            <tbody>
+              {users?.users?.map((el, index) => (
+                <tr key={el._id} className="border border-gray-500 text-black">
+                  <td className="py-2 px-4">{index + 1}</td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <InputForm
+                        register={register}
+                        fullWidth
+                        defaultValue={editElm?.email}
+                        errors={errors}
+                        id={"email"}
+                        validate={{
+                          required: true,
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: "Invalid email address",
+                          },
+                        }}
+                      />
+                    ) : (
+                      <span>{el.email}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <InputForm
+                        register={register}
+                        fullWidth
+                        defaultValue={editElm?.firstname}
+                        errors={errors}
+                        id={"firstname"}
+                        validate={{ required: "Require fill" }}
+                      />
+                    ) : (
+                      <span>{el.firstname}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <InputForm
+                        register={register}
+                        fullWidth
+                        defaultValue={editElm?.lastname}
+                        errors={errors}
+                        id={"lastname"}
+                        validate={{ required: "Require fill" }}
+                      />
+                    ) : (
+                      <span>{el.lastname}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <Select
+                        register={register}
+                        fullWidth
+                        defaultValue={el.role}
+                        errors={errors}
+                        id={"role"}
+                        validate={{ required: "Require fill" }}
+                        options={roles}
+                      />
+                    ) : (
+                      <span>
+                        {roles.find((role) => +role.code === +el.role)?.value}
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <InputForm
+                        register={register}
+                        fullWidth
+                        defaultValue={editElm?.mobile}
+                        errors={errors}
+                        id={"mobile"}
+                        validate={{
+                          required: "Require fill",
+                          pattern: {
+                            value: /^[62|0]+\d{9}/gi,
+                            message: "Invalid phone number",
+                          },
+                        }}
+                      />
+                    ) : (
+                      <span>{el.mobile}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <Select
+                        register={register}
+                        fullWidth
+                        defaultValue={el.isBlocked}
+                        errors={errors}
+                        id={"isBlocked"}
+                        validate={{ required: "Require fill" }}
+                        options={blockStatus}
+                      />
+                    ) : (
+                      <span> {el.isBlocked ? "Blocked" : "Active"}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4">
+                    {moment(el.createdAt).format("DD/MM/YYYY")}
+                  </td>
+                  <td className="py-2 px-4">
+                    {editElm?._id === el._id ? (
+                      <span
+                        onClick={() => setEditElm(null)}
+                        className="px-2 text-blue-500 hover:underline cursor-pointer"
+                      >
+                        Back
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setEditElm(el)}
+                        className="px-2 text-blue-500 hover:underline cursor-pointer"
+                      >
+                        Edit
+                      </span>
+                    )}
+                    <span
+                      onClick={() => handleDeleteUser(el._id)}
+                      className="px-2 text-red-500 hover:underline cursor-pointer"
+                    >
+                      Delete
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </form>
+        <div className="w-full flex">
+          <Pagination totalCount={users?.counts} />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default ManageUsers;
