@@ -15,6 +15,7 @@ import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "./store/app/asyncActions";
 import path from "./ultils/path";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
     <div>
       <Router>
         <Routes>
+          <ToastContainer />
           {routes.map((route) => {
             const Page = route.page;
             const Layout = route.isShowHeader ? DefaultComponent : Fragment;

@@ -19,6 +19,19 @@ export const getAllUsers = (params) =>
     params,
   });
 
+  export const updateUsers = (data, uid) =>
+  axios({
+    url: "/user/" + uid,
+    method: "put",
+    data,
+  });
+
+export const deleteUser = (uid) =>
+  axios({
+    url: "/user/" + uid,
+    method: "delete",
+  });
+
   export const updateCart = (data) =>
   axios({
     url: "/user/cart",
