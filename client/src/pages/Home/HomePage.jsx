@@ -78,16 +78,16 @@ const HomePage = () => {
             </div>
             <div className="box">
               <img src={delivery} alt="" />
-              <h3>free & fast delivery</h3>
+              <h3>Free & Fast Delivery</h3>
               <p>within 30 minutes</p>
-              <br />
+              <br/> 
               <Link to="/" className="btn">
                 read more
               </Link>
             </div>
             <div className="box">
               <img src={banner1} alt="" />
-              <h3>easy payment</h3>
+              <h3>Easy Payment</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit, quis!
               </p>

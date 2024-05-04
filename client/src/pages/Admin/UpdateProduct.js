@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { createProduct, updateProduct } from "../../apis/product";
+import { updateProduct } from "../../apis/product";
 import { Button, InputForm, MarkdownEditor, Select } from "../../Components";
 
 const UpdateProduct = ({ editProduct, render, setEditProduct }) => {

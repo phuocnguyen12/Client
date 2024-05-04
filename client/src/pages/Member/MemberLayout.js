@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { MemberSidebar } from "../../Components";
 
+
 const MemberLayout = () => {
   const { isLoggedIn, current } = useSelector((state) => state.user);
   if (!isLoggedIn || !current) {

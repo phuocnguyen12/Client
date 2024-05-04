@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from "../axios";
 
-// Product Category
+//Product Category
 export const getCategories = () =>
   axios({
     url: "/productcategory/",

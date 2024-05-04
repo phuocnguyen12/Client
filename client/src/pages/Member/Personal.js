@@ -1,12 +1,12 @@
-import { isMoment } from "moment/moment";
+import moment from "moment";
 import React, { useEffect } from "react";
-import { Button, InputForm } from "../../Components";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrent } from "../../apis";
-import { getCurrent } from "../../store/user/asyncActions";
 import { toast } from "react-toastify";
-import avatar from "../../assets/icon-user.png"
+import { updateCurrent } from "../../apis/user";
+import avatar from "../../assets/icon-user.png";
+import { Button, InputForm } from "../../Components/index";
+import { getCurrent } from "../../store/user/asyncActions";
 
 const Personal = () => {
   const {
@@ -119,7 +119,7 @@ const Personal = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="font-medium">Created At: </span>
-          <span>{isMoment(current?.createdAt).fromNow()}</span>
+          <span>{moment(current?.createdAt).fromNow()}</span>
         </div>
         <div className="flex flex-col gap-2">
           <span className="font-medium">Profile image: </span>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeCart } from "../../apis";
+import { removeCart } from "../../apis/user";
 import { getCurrent } from "../../store/user/asyncActions";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,7 +36,7 @@ const Order = ({ el, handleChangeQuantities, defaultQuantity = 1 }) => {
 
   return (
     <div>
-      <div className="w-main mx-auto font-bold my-8 flex text-2xl flex justify-center items-center">
+      <div className="w-main mx-auto font-bold my-8 flex text-2xl justify-center items-center">
         <div className="w-full flex items-center justify-center gap-4">
           <div>
             <img

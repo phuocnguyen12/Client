@@ -1,9 +1,8 @@
-import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import payment from "../../assets/payment.png";
 import { useForm } from "react-hook-form";
-import { Congrat, InputForm, Paypal } from "../../Components";
-import { useEffect, useState } from "react";
+import { Congrat, InputForm, Paypal } from "../../Components/index";
+import React, { useEffect, useState } from "react";
 import { getCurrent } from "../../store/user/asyncActions";
 
 const Checkout = () => {

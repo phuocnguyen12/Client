@@ -42,6 +42,7 @@ export const routes = [
   {
     path: "/about",
     page: AboutPage,
+    isShowHeader: true,
   },
   {
     path: "/contact",

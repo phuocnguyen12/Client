@@ -1,12 +1,11 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import device from "../../../assets/ModuleESP.png";
 import PropTypes from "prop-types";
 import React from "react";
 import "./ShoppingCart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { removeCart } from "../../../apis";
+import { removeCart } from "../../../apis/user";
 import { getCurrent } from "../../../store/user/asyncActions";
 import { toast } from "react-toastify";
 import path from "../../../ultils/path"

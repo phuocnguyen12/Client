@@ -3,22 +3,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { getProducts } from "../../apis/product";
-import { Pagination } from "../../Components";
-import ProductDetail from "../../Components/ProductDetail/ProductDetail";
-import "./ShopPage.scss";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
-import { updateCart } from "../../apis";
+import Swal from "sweetalert2";
+import { getProducts } from "../../apis/product";
+import { updateCart } from "../../apis/user";
+
+import ProductDetail from "../../Components/ProductDetail/ProductDetail";
 import { getCurrent } from "../../store/user/asyncActions";
+import "./ShopPage.scss";
+import { Pagination } from "../../Components";
+
 const ShopPage = () => {
   const { categories } = useSelector((state) => state.app);
+
   const [products, setProducts] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [params] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { current } = useSelector((state) => state.user)
+  const { current } = useSelector((state) => state.user);
+
   const fetchProducts = async (params) => {
     const product = await getProducts({
       ...params,
@@ -46,7 +50,7 @@ const ShopPage = () => {
       });
     const response = await updateCart({ pid: product._id });
     if (response.success) {
-      toast.success("Add Success");
+      toast.success("Add success");
       dispatch(getCurrent());
     } else {
       toast.error("Fail");
@@ -67,6 +71,7 @@ const ShopPage = () => {
         <h1 className="heading">
           products <span>categories</span>
         </h1>
+
         <div className="box-container">
           {categories?.map((el) => (
             <Link to={"#"} className="box">
@@ -75,14 +80,17 @@ const ShopPage = () => {
           ))}
         </div>
       </section>
+
       <section className="products" id="products">
         <h1 className="heading">
           our <span>products</span>
         </h1>
+
         <div className="box-container">
           {products?.products?.map((el, index) => (
             <div className="box" key={index}>
               <img src={el.images} alt="" />
+
               <h3 key={index}>{el.title}</h3>
               <div className="price">{el.price}$</div>
               <div className="stars">
@@ -108,10 +116,12 @@ const ShopPage = () => {
           )}
         </div>
       </section>
+
       <div className="w-4/6 text-xl m-auto my-4 flex justify-end">
         <Pagination totalCount={products?.counts} />
       </div>
     </div>
   );
 };
+
 export default ShopPage;

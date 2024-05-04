@@ -63,6 +63,6 @@ export const userSlice = createSlice({
     });
   },
 });
-export const { login, logout, clearMessage } = userSlice.actions;
+export const { login, logout, clearMessage, updateCart  } = userSlice.actions;
 
 export default userSlice.reducer;

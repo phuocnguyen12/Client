@@ -11,7 +11,6 @@ import {
 const PageItem = ({ children }) => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { shop } = useParams;
   const location = useLocation();
 
   const handlePagination = () => {

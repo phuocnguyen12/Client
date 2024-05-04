@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./ProductDetail.scss";
 import { toast } from "react-toastify";
 import { getCurrent } from "../../store/user/asyncActions";
-import { updateCart } from "../../apis";
+import { updateCart } from "../../apis/user";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

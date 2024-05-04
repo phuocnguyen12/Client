@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Order } from "../../Components";
+import { Order, Button } from "../../Components/index";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
-import { updateCart } from "../../apis";
+import { updateCart } from "../../store/user/userSlice";
 
 const MyCart = () => {
   const { currentCart } = useSelector((state) => state.user);
@@ -40,7 +39,7 @@ const MyCart = () => {
         ))}
       </div>
 
-      <div className="w-main mx-auto flex flex-col my-6 justify-center items-end gap-3 mx-4">
+      <div className="w-main flex flex-col my-6 justify-center items-end gap-3 mx-4">
         <span className="flex items-center text-3xl gap-8">
           <span>Subtotal:</span>
           <span className="text-red-400">

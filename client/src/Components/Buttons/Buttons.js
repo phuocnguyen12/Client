@@ -1,5 +1,5 @@
-import { type } from "@testing-library/user-event/dist/type/index";
-import React, { memo } from "react";
+import { type } from '@testing-library/user-event/dist/type/index';
+import React, { memo } from 'react'
 
 const Button = ({ children, handleOnClick, style, fw, type = "button" }) => {
   return (

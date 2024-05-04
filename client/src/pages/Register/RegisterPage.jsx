@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {register} from "../../apis/user"
 import logoImage from "../../assets/Logo-main.png";
-import Loading from "../../Components/LoadingComponent/Loading";
 import "./RegisterPage.scss";
 import { toast } from "react-toastify";
 

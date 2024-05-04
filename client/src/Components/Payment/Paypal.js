@@ -5,7 +5,7 @@ import {
 } from "@paypal/react-paypal-js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { createOrder } from "../../apis";
+import { createOrder } from "../../apis/product";
 import Swal from "sweetalert2";
 
 // This value is from the props in the UI

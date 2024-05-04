@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { deleteUser, getAllUsers, updateUsers } from "../../apis/user";
-import moment from "moment/moment";
+import moment from "moment";
 import { blockStatus, roles } from "../../ultils/contants";
 import { useSearchParams } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";

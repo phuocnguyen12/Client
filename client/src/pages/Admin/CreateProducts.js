@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Button, InputForm, MarkdownEditor, Select } from "../../Components";
-import { createProduct } from "../../apis/product";
+import { createProduct } from "../../apis";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";

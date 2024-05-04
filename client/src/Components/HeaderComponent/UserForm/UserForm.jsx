@@ -50,9 +50,9 @@ const UserForm = ({ active }) => {
               }
             >
               {+current?.role === 0 ? (
-                <span>manage</span>
+                <span>Manage</span>
               ) : (
-                <span>profile</span>
+                <span>Profile</span>
               )}
             </Link>
           </div>

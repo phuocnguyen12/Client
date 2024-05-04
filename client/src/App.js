@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect } from "react";
-import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
-import { routes } from "./routes";
-import { Wishlist, MyCart, History, MemberLayout, Personal } from "./pages/Member";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import { useDispatch } from "react-redux";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   AdminLayout,
   CreateProducts,
@@ -11,24 +12,31 @@ import {
   ManageProducts,
   ManageUsers,
 } from "./pages/Admin";
-import DefaultComponent from "./Components/DefaultComponent/DefaultComponent";
-import { useDispatch } from "react-redux";
+import {
+  MemberLayout,
+  Personal,
+  History,
+  MyCart,
+  Wishlist,
+} from "./pages/Member";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import { routes } from "./routes";
 import { getCategories } from "./store/app/asyncActions";
 import path from "./ultils/path";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch();
   // const { isShowModal, modalChildren } = useSelector((state) => state.app);
   useEffect(() => {
     dispatch(getCategories());
-  }, );
+  });
 
   return (
     <div>
       <Router>
+        {/* {isShowModal && <Modal>{modalChildren}</Modal>} */}
+        <ToastContainer />
         <Routes>
-          <ToastContainer />
           {routes.map((route) => {
             const Page = route.page;
             const Layout = route.isShowHeader ? DefaultComponent : Fragment;

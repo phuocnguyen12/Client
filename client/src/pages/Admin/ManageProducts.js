@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { InputField, InputForm, Pagination } from "../../Components";
-import { deleteProduct, getProducts } from "../../apis/product";
+import { InputField, Pagination } from "../../Components/index";
+import { deleteProduct, getProducts } from "../../apis/";
 import { useForm } from "react-hook-form";
 import moment from "moment/moment";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";

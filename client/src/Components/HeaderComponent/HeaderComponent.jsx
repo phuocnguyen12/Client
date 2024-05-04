@@ -9,7 +9,6 @@ import {
   faMagnifyingGlass,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import Navbar from "./Navbar/Navbar";
 import SearchForm from "./SearchForm/SearchForm";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
