@@ -49,6 +49,7 @@ footer {
   font-size: 3.5rem;
   color: var(--black);
   padding: 2rem 0 3rem 0;
+  font-weight: bold;
 
   span {
     background: $blue;
@@ -112,4 +113,8 @@ footer {
       }
     }
   }
+}
+
+.tsqd-transitions-container {
+  display: none !important;
 }

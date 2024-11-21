@@ -4,6 +4,7 @@ import device1 from "../../assets/arduino-Uno.png";
 import device2 from "../../assets/arduino-control.png";
 import device3 from "../../assets/arduino-nano.png";
 import banner1 from "../../assets/icon-device.png";
+import banner2 from "../../assets/icon-payments.png";
 import delivery from "../../assets/icon-delivery.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -63,7 +64,7 @@ const HomePage = () => {
       <section className="features" id="features">
         <div className="content">
           <h1 className="heading">
-            our <span>features</span>
+            Our <span>Features</span>
           </h1>
           <div className="box-container">
             <div className="box">
@@ -80,13 +81,13 @@ const HomePage = () => {
               <img src={delivery} alt="" />
               <h3>Free & Fast Delivery</h3>
               <p>within 30 minutes</p>
-              <br/> 
+              <br />
               <Link to="/" className="btn">
                 read more
               </Link>
             </div>
             <div className="box">
-              <img src={banner1} alt="" />
+              <img src={banner2} alt="" />
               <h3>Easy Payment</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit, quis!

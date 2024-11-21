@@ -8,7 +8,7 @@ import {
   AdminLayout,
   CreateProducts,
   Dashboard,
-  ManageOrder,
+  // ManageOrder,
   ManageProducts,
   ManageUsers,
 } from "./pages/Admin";
@@ -17,7 +17,7 @@ import {
   Personal,
   History,
   MyCart,
-  Wishlist,
+  // Wishlist,
 } from "./pages/Member";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import { routes } from "./routes";
@@ -54,7 +54,7 @@ function App() {
           })}
           <Route path={path.ADMIN} element={<AdminLayout />}>
             <Route path={path.DASHBOARD} element={<Dashboard />} />
-            <Route path={path.MANAGE_ORDER} element={<ManageOrder />} />
+            {/* <Route path={path.MANAGE_ORDER} element={<ManageOrder />} /> */}
             <Route path={path.MANAGE_PRODUCTS} element={<ManageProducts />} />
             <Route path={path.MANAGE_USERS} element={<ManageUsers />} />
             <Route path={path.CREATE_PRODUCTS} element={<CreateProducts />} />
@@ -63,7 +63,7 @@ function App() {
             <Route path={path.PERSONAL} element={<Personal />} />
             <Route path={path.HISTORY} element={<History />} />
             <Route path={path.MY_CART} element={<MyCart />} />
-            <Route path={path.WISHLIST} element={<Wishlist />} />
+            {/* <Route path={path.WISHLIST} element={<Wishlist />} /> */}
           </Route>
           <Route path={path.ALL} element={<NotFoundPage />} />
         </Routes>

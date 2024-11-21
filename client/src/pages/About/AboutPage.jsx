@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import about from "../../assets/electronic-components.png";
 import gallery from "../../assets/ram-memory.png";
 import { Link } from "react-router-dom";
