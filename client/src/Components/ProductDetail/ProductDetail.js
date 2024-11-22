@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const ProductDetail = ({ product, onClose }) => {
   const modalRef = useRef(null);
   const cleanDescription = product.description.replace(/<\/?p>/g, "");
+  console.log(cleanDescription);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
@@ -28,7 +29,7 @@ const ProductDetail = ({ product, onClose }) => {
       });
     const response = await updateCart({ pid: product._id });
     if (response.success) {
-      toast.success("Add success");
+      toast.success("Add success", { position: "top-center" });
       dispatch(getCurrent());
     } else {
       toast.error("Fail");
@@ -62,7 +63,7 @@ const ProductDetail = ({ product, onClose }) => {
             className="w-[400px] h-[250px] my-4 rounded-lg"
           />
         </div>
-        <div className="flex items-center text-2xl justify-start my-4">
+        <div className="flex text-2xl justify-start my-4">
           <span className="mr-2 font-bold ">Description: </span>
           <span>{cleanDescription}</span>
         </div>

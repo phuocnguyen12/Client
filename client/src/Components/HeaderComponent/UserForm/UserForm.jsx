@@ -36,7 +36,7 @@ const UserForm = ({ active }) => {
     <form className={`user-form ${active ? "active" : ""}`}>
       {isLoggedIn && current ? (
         <h3 className="profile-name">
-        {`${current?.firstname} ${current?.lastname}`}
+          {`${current?.firstname} ${current?.lastname}`}
           <div>
             <img src={current?.avatar} />
           </div>
@@ -64,7 +64,7 @@ const UserForm = ({ active }) => {
         </h3>
       ) : (
         <div>
-        <div>
+          <div>
             <Link to="/login">
               <button className="btn btn-login">login now</button>
             </Link>
