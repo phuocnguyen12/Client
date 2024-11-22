@@ -33,13 +33,13 @@ export const adminSidebar = [
       },
     ],
   },
-  {
-    id: 4,
-    type: "SINGLE",
-    text: "Manage orders",
-    path: `/${path.ADMIN}/${path.MANAGE_ORDER}`,
-    icon: <MdManageSearch size={20} />,
-  },
+  // {
+  //   id: 4,
+  //   type: "SINGLE",
+  //   text: "Manage orders",
+  //   path: `/${path.ADMIN}/${path.MANAGE_ORDER}`,
+  //   icon: <MdManageSearch size={20} />,
+  // },
 ];
 
 export const memberSidebar = [
@@ -65,13 +65,13 @@ export const memberSidebar = [
     path: `/${path.MEMBER}/${path.HISTORY}`,
     icon: <MdManageSearch size={20} />,
   },
-  {
-    id: 4,
-    type: "SINGLE",
-    text: "Wishlist",
-    path: `/${path.MEMBER}/${path.WISHLIST}`,
-    icon: <MdManageSearch size={20} />,
-  },
+  // {
+  //   id: 4,
+  //   type: "SINGLE",
+  //   text: "Wishlist",
+  //   path: `/${path.MEMBER}/${path.WISHLIST}`,
+  //   icon: <MdManageSearch size={20} />,
+  // },
 ];
 
 export const roles = [

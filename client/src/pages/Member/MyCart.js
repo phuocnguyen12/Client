@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Order, Button } from "../../Components/index";
 import { Link } from "react-router-dom";
+import { Button, Order } from "../../Components/index";
 import { updateCart } from "../../store/user/userSlice";
 
 const MyCart = () => {
   const { currentCart } = useSelector((state) => state.user);
-  const dispatch = useDispatch();;
+  const dispatch = useDispatch();
 
   const handleChangeQuantities = (pid, quantity) => {
     // console.log({ pid, quantity });
@@ -29,7 +29,7 @@ const MyCart = () => {
           <div className="col-span-3 w-full text-center">Price</div>
           <div className="col-span-3 w-full text-center">Action</div>
         </div>
-        {currentCart?.cart?.map((el) => (
+        {currentCart?.map((el) => (
           <Order
             key={el._id}
             handleChangeQuantities={handleChangeQuantities}
@@ -39,18 +39,18 @@ const MyCart = () => {
         ))}
       </div>
 
-      <div className="w-main flex flex-col my-6 justify-center items-end gap-3 mx-4">
+      <div className="w-main flex flex-col my-6 justify-center items-end text-2xl gap-3 mr-10">
         <span className="flex items-center text-3xl gap-8">
           <span>Subtotal:</span>
           <span className="text-red-400">
-          {`${currentCart?.reduce(
+            {`${currentCart?.reduce(
               (sum, el) => +el?.product?.price * el?.quantity + sum,
               0
             )}`}
           </span>
         </span>
         <Link to="/checkout">
-          <Button>Checkout</Button>
+          <Button className="">Checkout</Button>
         </Link>
       </div>
     </div>
