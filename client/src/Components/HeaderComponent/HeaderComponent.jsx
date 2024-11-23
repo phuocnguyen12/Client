@@ -15,7 +15,7 @@ import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import UserForm from "./UserForm/UserForm";
 
 const Header = () => {
-  const [isActiveSearch, setIsActiveSearch] = useState(false);
+  // const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
   const [isActiveAuth, setIsActiveAuth] = useState(false);
   const [isActiveMenu, setIsActiveMenu] = useState(false);
@@ -24,11 +24,11 @@ const Header = () => {
     setIsActiveMenu(false);
     setIsActiveCart(false);
     setIsActiveAuth(false);
-    setIsActiveSearch(false);
+    // setIsActiveSearch(false);
   };
 
   const handleSearchClick = () => {
-    setIsActiveSearch((prevVisible) => !prevVisible);
+    // setIsActiveSearch((prevVisible) => !prevVisible);
     setIsActiveAuth(false);
     setIsActiveCart(false);
     setIsActiveMenu(false);
@@ -37,13 +37,13 @@ const Header = () => {
   const handleCartClick = () => {
     setIsActiveCart((prevVisible) => !prevVisible);
     setIsActiveAuth(false);
-    setIsActiveSearch(false);
+    // setIsActiveSearch(false);
     setIsActiveMenu(false);
   };
 
   const handleAuthClick = () => {
     setIsActiveAuth((prevVisible) => !prevVisible);
-    setIsActiveSearch(false);
+    // setIsActiveSearch(false);
     setIsActiveCart(false);
     setIsActiveMenu(false);
   };
@@ -52,7 +52,7 @@ const Header = () => {
     setIsActiveMenu((prevVisible) => !prevVisible);
     setIsActiveAuth(false);
     setIsActiveCart(false);
-    setIsActiveSearch(false);
+    // setIsActiveSearch(false);
   };
 
   return (
@@ -68,9 +68,9 @@ const Header = () => {
         <button type="button" id="menu-btn" onClick={handleMenuClick}>
           <FontAwesomeIcon className="fa-icon" icon={faBars} />
         </button>
-        <button type="button" id="search-btn" onClick={handleSearchClick}>
+        {/* <button type="button" id="search-btn" onClick={handleSearchClick}>
           <FontAwesomeIcon className="fa-icon" icon={faMagnifyingGlass} />
-        </button>
+        </button> */}
         <button type="button" id="cart-btn" onClick={handleCartClick}>
           <FontAwesomeIcon className="fa-icon" icon={faCartShopping} />
         </button>
@@ -79,7 +79,7 @@ const Header = () => {
         </button>
       </div>
 
-      <SearchForm active={isActiveSearch} />
+      {/* <SearchForm active={isActiveSearch} /> */}
       <ShoppingCart active={isActiveCart} />
       <UserForm active={isActiveAuth} />
     </header>

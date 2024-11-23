@@ -31,7 +31,7 @@ const PageItem = ({ children }) => {
       className={clsx(
         "w-10 h-10 flex justify-center",
         !Number(children) && "items-end pb-2",
-        Number(children) && "items-center hover:rounded-full hover:bg-gray-300"
+        Number(children) && "items-center hover:rounded-full hover:bg-blue-300"
       )}
       onClick={handlePagination}
       type="button"

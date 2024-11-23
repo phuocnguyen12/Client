@@ -26,7 +26,7 @@ const InputField = ({
       <input
         type={type || "text"}
         className={clsx(
-          "px-4 py2 rounded-sm border w-full mt-2 placeholder:text-sm placeholder:italic outline-none text-black",
+          "px-4 py2 rounded-lg border w-full mt-2 placeholder:text-xl  outline-none text-black",
           style
         )}
         placeholder={
@@ -39,7 +39,7 @@ const InputField = ({
         onFocus={() => setInvalidFieds && setInvalidFieds([])}
       />
       {invalidFields?.some((el) => el.mame === nameKey) && (
-        <small className="text-main italic">
+        <small className="text-main">
           {invalidFields.find((el) => el.name === nameKey)?.mes}
         </small>
       )}

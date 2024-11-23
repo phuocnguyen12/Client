@@ -16,26 +16,26 @@ const Pagination = ({ totalCount }) => {
     return `${start} - ${end}`;
   };
   return (
-    <div className="flex w-full justify-between items-center">
+    <div className=" flex flex-col w-full justify-center items-center">
       {!+params.get("page") ? (
-        <span className="text-sm italic">{`Show products 1 - ${
+        <span className="text-2xl font-medium">{`Showing 1 - ${
           Math.min(+process.env.REACT_APP_LIMIT, totalCount) || 10
         } of ${totalCount}`}</span>
       ) : (
         ""
       )}
       {+params.get("page") ? (
-        <span className="text-sm italic">{`Show products ${Math.min(
-          totalCount,
-          1
+        <span className="text-2xl font-medium">{`Showing ${Math.min(
+          (params.get("page") - 1) * +process.env.REACT_APP_LIMIT + 1,
+          totalCount
         )} - ${Math.min(
-          +process.env.REACT_APP_LIMIT,
+          params.get("page") * +process.env.REACT_APP_LIMIT,
           totalCount
         )} of ${totalCount}`}</span>
       ) : (
         ""
       )}
-      <div className="flex items-center">
+      <div className="flex mt-2 text-2xl items-center">
         {pagination?.map((el) => (
           <PageItem key={el}>{el}</PageItem>
         ))}
