@@ -99,10 +99,18 @@ const ManageUsers = () => {
   }, [editElm]);
 
   return (
-    <div className={clsx("w-full, text-3xl", editElm && "pl-16")}>
-      <h1 className="h-[75px] flex justify-between items-center text-6xl font-bold px-4 border-b border-white">
-        <span>Manage users</span>
-      </h1>
+    <div
+      className={clsx(
+        "w-full text-3xl px-8 flex flex-col gap-4",
+        editElm && "pl-20 ml-10"
+      )}
+    >
+      <div className="p-4 border-b w-full flex justify-between items-center">
+        <h1 className="h-[75px] flex justify-between items-center text-6xl font-bold px-4">
+          <span>Manage users</span>
+        </h1>
+      </div>
+
       <div className="w-full p-4">
         <div className="flex justify-end py-4">
           <InputField
@@ -123,7 +131,7 @@ const ManageUsers = () => {
           )}
           <table className="table-auto mb-6 ml-4 text-left w-full">
             <thead className="font-bold bg-gray-700 text-[13px]">
-              <tr className="border border-gray-500">
+              <tr className="border border-white">
                 <th className="px-4 py-2">#</th>
                 <th className="px-4 py-2">Email address</th>
                 <th className="px-4 py-2">First name</th>
@@ -137,7 +145,7 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {users?.users?.map((el, index) => (
-                <tr key={el._id} className="border border-gray-500 text-black">
+                <tr key={el._id} className="border border-white text-black">
                   <td className="py-2 px-4">{index + 1}</td>
                   <td className="py-2 px-4">
                     {editElm?._id === el._id ? (

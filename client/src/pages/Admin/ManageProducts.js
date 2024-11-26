@@ -75,7 +75,7 @@ const ManageProducts = () => {
   }, [params, queriesDebounce, update]);
 
   return (
-    <div className="w-full pl-8 flex flex-col gap-4 relative">
+    <div className="w-full px-8 flex flex-col gap-4 relative">
       {editProduct && (
         <div className="absolute inset-0 min-h-screen bg-gray-100 z-50">
           <UpdateProduct
@@ -85,15 +85,14 @@ const ManageProducts = () => {
           />
         </div>
       )}
-      <div className="w-full"></div>
+      
       <div className="p-4 border-b w-full flex justify-between items-center">
         <h1 className="h-[75px] flex justify-between items-center text-6xl font-bold px-4">
           <span>Manage Product</span>
         </h1>
       </div>
 
-      <div className="flex w-full justify-end items-center text-black px-4">
-        <form className="w-[45%]">
+      <div className="p-4 w-full my-5 flex justify-end items-center">
           <InputField
             className="text-black"
             nameKey={"q"}
@@ -103,12 +102,11 @@ const ManageProducts = () => {
             isHideLabel
             style="p-2 w-10"
           />
-        </form>
       </div>
 
       <table className="table-auto">
         <thead className="font-bold bg-gray-700 text-[13px]">
-          <tr className="border border-gray-500 text-white">
+          <tr className="border border-white text-white">
             <th className="text-center">#</th>
             <th className="text-center">Images</th>
             <th className="text-center">Product</th>
@@ -123,7 +121,7 @@ const ManageProducts = () => {
 
         <tbody>
           {products?.map((el, idx) => (
-            <tr key={el._id} className="text-center py-2">
+            <tr key={el._id} className="text-center py-2 border border-white">
               <td>
                 {(+params.get("page") > 1 ? +params.get("page") - 1 : 0) *
                   process.env.REACT_APP_LIMIT +
@@ -136,8 +134,16 @@ const ManageProducts = () => {
                   className="w-20 h-20 m-auto object-cover"
                 />
               </td>
-              <td className="text-center py-2">{el.title}</td>
-              <td className="text-center py-2">{el.category}</td>
+              <td className="text-center py-2">
+                {el.title.length > 12
+                  ? `${el.title.substring(0, 12)}...`
+                  : el.title}
+              </td>
+              <td className="text-center py-2">
+                {el.category.length > 10
+                  ? `${el.category.substring(0, 10)}...`
+                  : el.category}
+              </td>
               <td className="text-center py-2">{el.price}</td>
               <td className="text-center py-2">{el.quantity}</td>
               <td className="text-center py-2">{el.sold}</td>
@@ -145,7 +151,7 @@ const ManageProducts = () => {
                 {moment(el.createdAt).format("DD/MM/YYYY")}
               </td>
               <td className="text-center py-2">
-              <span
+                <span
                   onClick={() => setEditProduct(el)}
                   className="text-blue-500 hover:underline cursor-pointer px-1"
                 >
