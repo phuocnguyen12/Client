@@ -46,16 +46,20 @@ const Order = ({ el, handleChangeQuantities, defaultQuantity = 1 }) => {
             />
           </div>
           <div>
-            <h3 className="text-3xl font-bold">{el?.product?.title}</h3>
+            <h3 className="text-3xl font-bold">
+              {el?.product?.title.length > 10
+                ? `${el.product.title.slice(0, 10)}...`
+                : el.product.title}
+            </h3>
           </div>
         </div>
-        <div className="w-full text-center">
+        <div className="w-full text-center text-2xl">
           {/* {el?.quantity} */}
           <button onClick={() => handleDecrease()}>-</button>
           <span className="mx-4">{quantity}</span>
           <button onClick={() => handleIncrease()}>+</button>
         </div>
-        <div className="w-full text-center">
+        <div className="w-full text-center text-2xl">
           <span>{el?.product?.price * quantity} $</span>
         </div>
 
